@@ -79,6 +79,9 @@ Simple.`
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
       <div className="max-w-4xl mx-auto">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-12 text-center">
+          El manifiesto Simpler
+        </h2>
         <div className="bg-card border border-border rounded-2xl p-8 sm:p-12">
           <style>{`
             @keyframes scrollUp {
