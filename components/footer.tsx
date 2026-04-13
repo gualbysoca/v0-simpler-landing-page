@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { Mail, MapPin } from 'lucide-react'
 
 const footerSections = [
@@ -8,35 +7,25 @@ const footerSections = [
     title: 'Legales',
     links: [
       { label: 'Términos de Servicio', href: '#' },
-      { label: 'Política de Privacidad', href: '#' },
-      { label: 'Avisos Legales', href: '#' },
-      { label: 'Cookies', href: '#' }
+      { label: 'Política de Privacidad', href: '#' }
     ]
   },
   {
     title: 'Transparencia',
     links: [
-      { label: 'Tasas y Comisiones', href: '#' },
-      { label: 'Reportes Financieros', href: '#' },
-      { label: 'Libro de Reclamaciones', href: '#' },
-      { label: 'Estado del Sistema', href: '#' }
+      { label: 'Tasas y Comisiones', href: '#' }
     ]
   },
   {
     title: 'Protección al Usuario',
     links: [
-      { label: 'Cómo Protegemos Datos', href: '#' },
-      { label: 'Prevención de Fraude', href: '#' },
-      { label: 'Seguro de Depósitos', href: '#' },
-      { label: 'Disputas y Reclamaciones', href: '#' }
+      { label: 'Centro de Seguridad', href: '#' }
     ]
   },
   {
     title: 'Institucional',
     links: [
       { label: 'Acerca de Nosotros', href: '#' },
-      { label: 'Careers', href: '#' },
-      { label: 'Blog', href: '#' },
       { label: 'Contáctanos', href: '#' }
     ]
   }
@@ -71,61 +60,61 @@ export function Footer() {
         <div className="h-px bg-foreground/10 my-8" />
 
         {/* Bottom Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Company Info & Contact */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Image
-                src="/images/logo.png"
-                alt="Simpler"
-                width={24}
-                height={24}
-                className="h-6 w-6"
-              />
-              <span className="font-bold text-lg text-background">Simpler</span>
-            </div>
-            <p className="text-background/70 text-sm mb-4 leading-relaxed">
-              Plataforma fintech dedicada a simplificar remesas internacionales y acceso a activos virtuales.
-            </p>
-            <div className="space-y-2 text-sm text-background/70">
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4" />
-                <a href="mailto:support@simpler.app" className="hover:text-background transition">
-                  support@simpler.app
-                </a>
+        <div className="flex flex-col gap-8">
+          {/* Full Width Brand Name */}
+          <div className="w-full -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
+            <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-background tracking-tighter leading-none">
+              Simpler
+            </h2>
+          </div>
+
+          {/* Company Info & Regulatory Info */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Company Info & Contact */}
+            <div>
+              <p className="text-background/70 text-sm mb-4 leading-relaxed">
+                Plataforma fintech dedicada a simplificar remesas internacionales y acceso a activos virtuales.
+              </p>
+              <div className="space-y-2 text-sm text-background/70">
+                <div className="flex items-center gap-2">
+                  <Mail className="w-4 h-4" />
+                  <a href="mailto:support@simpler.app" className="hover:text-background transition">
+                    support@simpler.app
+                  </a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4" />
+                  <span>Disponible globalmente</span>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4" />
-                <span>Disponible globalmente</span>
+            </div>
+
+            {/* Regulatory Info & Disclaimers */}
+            <div>
+              <h4 className="font-bold text-background mb-4">Información Regulatoria</h4>
+              <div className="space-y-3 text-xs text-background/70">
+                <p>
+                  <strong className="text-background">USDT:</strong> Activo Virtual sujeto a regulaciones locales. Consulta la normativa de tu país.
+                </p>
+                <p>
+                  <strong className="text-background">Disclaimer:</strong> Simpler no es un banco tradicional. Las transacciones pueden estar sujetas a límites y verificaciones adicionales.
+                </p>
+                <p>
+                  <strong className="text-background">Riesgo:</strong> Los activos virtuales conllevan riesgo. Invierte solo lo que puedas permitirte perder.
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Regulatory Info & Disclaimers */}
-          <div>
-            <h4 className="font-bold text-background mb-4">Información Regulatoria</h4>
-            <div className="space-y-3 text-xs text-background/70">
-              <p>
-                <strong className="text-background">USDT:</strong> Activo Virtual sujeto a regulaciones locales. Consulta la normativa de tu país.
-              </p>
-              <p>
-                <strong className="text-background">Disclaimer:</strong> Simpler no es un banco tradicional. Las transacciones pueden estar sujetas a límites y verificaciones adicionales.
-              </p>
-              <p>
-                <strong className="text-background">Riesgo:</strong> Los activos virtuales conllevan riesgo. Invierte solo lo que puedas permitirte perder.
-              </p>
+          {/* Bottom Bar */}
+          <div className="h-px bg-background/10" />
+          <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-background/60">
+            <p>&copy; 2024 Simpler. Todos los derechos reservados.</p>
+            <div className="flex gap-4 mt-4 sm:mt-0">
+              <a href="#" className="hover:text-background transition">Twitter</a>
+              <a href="#" className="hover:text-background transition">LinkedIn</a>
+              <a href="#" className="hover:text-background transition">Instagram</a>
             </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="h-px bg-foreground/10 my-8" />
-        <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-background/60">
-          <p>&copy; 2024 Simpler. Todos los derechos reservados.</p>
-          <div className="flex gap-4 mt-4 sm:mt-0">
-            <a href="#" className="hover:text-background transition">Twitter</a>
-            <a href="#" className="hover:text-background transition">LinkedIn</a>
-            <a href="#" className="hover:text-background transition">Instagram</a>
           </div>
         </div>
       </div>

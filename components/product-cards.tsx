@@ -55,26 +55,6 @@ export function ProductCards() {
             )
           })}
         </div>
-
-        {/* Trust Indicators */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 bg-secondary/5 rounded-2xl p-8 border border-secondary/20">
-          <div className="text-center">
-            <p className="text-3xl font-bold text-primary mb-2">50K+</p>
-            <p className="text-sm text-foreground/60">Usuarios activos</p>
-          </div>
-          <div className="text-center">
-            <p className="text-3xl font-bold text-primary mb-2">$2.5M</p>
-            <p className="text-sm text-foreground/60">Volumen procesado</p>
-          </div>
-          <div className="text-center">
-            <p className="text-3xl font-bold text-primary mb-2">24/7</p>
-            <p className="text-sm text-foreground/60">Soporte disponible</p>
-          </div>
-          <div className="text-center">
-            <p className="text-3xl font-bold text-primary mb-2">100%</p>
-            <p className="text-sm text-foreground/60">Seguridad garantizada</p>
-          </div>
-        </div>
       </div>
     </section>
   )

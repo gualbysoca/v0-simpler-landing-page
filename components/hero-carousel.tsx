@@ -79,14 +79,6 @@ export function HeroCarousel() {
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
-
-        {/* CTA */}
-        <div className="text-center">
-          <p className="text-foreground/60 mb-4">¿Listo para comenzar?</p>
-          <button className="px-8 py-4 bg-primary text-primary-foreground rounded-full font-bold text-lg hover:bg-primary/90 transition shadow-lg hover:shadow-xl">
-            Solicitar Acceso Ahora
-          </button>
-        </div>
       </div>
     </section>
   )
