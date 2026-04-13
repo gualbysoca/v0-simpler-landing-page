@@ -97,42 +97,44 @@ Simple.`
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-12 text-center">
           El manifiesto Simpler
         </h2>
-        <div className="flex gap-8 items-center">
-          {/* Speed Control */}
-          <div className="flex flex-col items-center gap-6">
-            <div className="w-20 h-20 flex items-center justify-center">
-              <input
-                type="range"
-                min="10"
-                max="200"
-                value={speed}
-                onChange={(e) => setSpeed(Number(e.target.value))}
-                className="w-20 h-20 rounded-full cursor-pointer appearance-none bg-gradient-to-r from-primary/20 to-primary/40"
-                style={{
-                  accentColor: 'var(--primary, #9B6DD0)',
-                }}
-              />
-            </div>
-            <div className="text-center">
-              <p className="text-2xl font-bold text-primary mb-2">{speed}%</p>
-              <p className="text-xs text-foreground/60">Velocidad</p>
-            </div>
-          </div>
-
+        <div className="flex flex-col gap-6">
           {/* Manifesto Card */}
-          <div className="flex-1 bg-card border border-border rounded-2xl p-8 sm:p-12">
+          <div className="bg-black rounded-2xl p-8 sm:p-12">
             <div 
               ref={scrollContainerRef}
               onWheel={handleWheel}
               className="h-80 overflow-y-scroll overflow-x-hidden relative scroll-smooth"
               style={{ scrollBehavior: 'smooth' }}
             >
-              <div className="whitespace-pre-line text-foreground/80 leading-relaxed font-light text-center space-y-4">
+              <div className="whitespace-pre-line text-white leading-relaxed font-light text-center space-y-4">
                 {manifestoText.split('\n\n').map((paragraph, idx) => (
                   <p key={idx} className="text-sm sm:text-base">
                     {paragraph}
                   </p>
                 ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Speed Control */}
+          <div className="flex justify-center">
+            <div className="flex flex-col items-center gap-6">
+              <div className="w-20 h-20 flex items-center justify-center">
+                <input
+                  type="range"
+                  min="10"
+                  max="200"
+                  value={speed}
+                  onChange={(e) => setSpeed(Number(e.target.value))}
+                  className="w-20 h-20 rounded-full cursor-pointer appearance-none bg-gradient-to-r from-primary/20 to-primary/40"
+                  style={{
+                    accentColor: 'var(--primary, #9B6DD0)',
+                  }}
+                />
+              </div>
+              <div className="text-center">
+                <p className="text-2xl font-bold text-primary mb-2">{speed}%</p>
+                <p className="text-xs text-foreground/60">Velocidad</p>
               </div>
             </div>
           </div>
