@@ -133,12 +133,16 @@ Simple.`
             <div 
               ref={scrollContainerRef}
               onWheel={handleWheel}
-              className="h-80 overflow-y-auto relative"
-              style={{ scrollBehavior: 'smooth' }}
+              className="h-80 overflow-hidden relative"
             >
               <div className={`whitespace-pre-line text-white leading-relaxed font-light text-center space-y-4 manifesto-scroll ${isUserScrolling ? 'paused' : ''}`}>
                 {manifestoText.split('\n\n').map((paragraph, idx) => (
-                  <p key={idx} className="text-sm sm:text-base">
+                  <p key={`first-${idx}`} className="text-sm sm:text-base">
+                    {paragraph}
+                  </p>
+                ))}
+                {manifestoText.split('\n\n').map((paragraph, idx) => (
+                  <p key={`second-${idx}`} className="text-sm sm:text-base">
                     {paragraph}
                   </p>
                 ))}
