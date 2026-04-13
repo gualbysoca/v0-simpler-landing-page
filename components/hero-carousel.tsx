@@ -55,13 +55,13 @@ export function HeroCarousel() {
             >
               <div className="text-left">
                 {product.id === 'remesas' && (
-                  <div className="mb-3 w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                  <div className="mb-3 w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
                     <Image
                       src="/images/remesas-icon.png"
                       alt="Remesas"
                       width={24}
                       height={24}
-                      className="w-6 h-6"
+                      className="w-6 h-6 object-contain"
                     />
                   </div>
                 )}
