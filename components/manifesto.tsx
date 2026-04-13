@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef } from 'react'
+import Image from 'next/image'
 
 export function Manifesto() {
   const [speed, setSpeed] = useState(100)
@@ -141,6 +142,15 @@ Simple.`
                     {paragraph}
                   </p>
                 ))}
+                <div className="py-12 flex justify-center">
+                  <Image
+                    src="/images/simpler-logo-white.png"
+                    alt="Simpler"
+                    width={280}
+                    height={120}
+                    className="h-24 w-auto"
+                  />
+                </div>
                 {manifestoText.split('\n\n').map((paragraph, idx) => (
                   <p key={`second-${idx}`} className="text-sm sm:text-base">
                     {paragraph}
