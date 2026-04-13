@@ -133,7 +133,8 @@ Simple.`
             <div 
               ref={scrollContainerRef}
               onWheel={handleWheel}
-              className="h-80 overflow-hidden relative"
+              className="h-80 overflow-y-auto relative"
+              style={{ scrollBehavior: 'smooth' }}
             >
               <div className={`whitespace-pre-line text-white leading-relaxed font-light text-center space-y-4 manifesto-scroll ${isUserScrolling ? 'paused' : ''}`}>
                 {manifestoText.split('\n\n').map((paragraph, idx) => (
