@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Mail, MapPin } from 'lucide-react'
 
 const footerSections = [
@@ -61,11 +62,18 @@ export function Footer() {
 
         {/* Bottom Section */}
         <div className="flex flex-col gap-8">
-          {/* Full Width Brand Name */}
+          {/* Full Width Brand Logo */}
           <div className="w-full -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
-            <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-background tracking-tighter leading-none">
-              Simpler
-            </h2>
+            <div className="w-11/12">
+              <Image
+                src="/images/simpler-footer-logo.png"
+                alt="Simpler"
+                width={800}
+                height={200}
+                className="w-full h-auto"
+                priority
+              />
+            </div>
           </div>
 
           {/* Company Info & Regulatory Info */}
