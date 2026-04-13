@@ -26,15 +26,15 @@ export function HeroCarousel() {
   const current = products[activeProduct]
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-b from-background via-background to-background">
-      <div className="max-w-4xl w-full text-center mb-16">
-        <div className="inline-block mb-6 px-4 py-2 bg-secondary/10 border border-secondary/30 rounded-full">
+    <section className="flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-gradient-to-b from-background via-background to-background">
+      <div className="max-w-4xl w-full text-center mb-12">
+        <div className="inline-block mb-4 px-4 py-2 bg-secondary/10 border border-secondary/30 rounded-full">
           <p className="text-sm font-medium text-secondary">Nueva plataforma fintech</p>
         </div>
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-balance text-foreground mb-6">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-balance text-foreground mb-4">
           Transacciones que simplifican tu vida
         </h1>
-        <p className="text-lg sm:text-xl text-foreground/60 text-balance max-w-2xl mx-auto mb-12">
+        <p className="text-base sm:text-lg text-foreground/60 text-balance max-w-2xl mx-auto mb-8">
           Remesas rápidas y USDT seguro. Toda la tecnología fintech que necesitas en una plataforma confiable.
         </p>
       </div>
@@ -61,11 +61,11 @@ export function HeroCarousel() {
         </div>
 
         {/* Product Details */}
-        <div className="bg-card border border-border rounded-2xl p-8 sm:p-12 mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">{current.name}</h2>
-          <p className="text-lg text-foreground/70 mb-8">{current.description}</p>
+        <div className="bg-card border border-border rounded-2xl p-8 sm:p-12 mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">{current.name}</h2>
+          <p className="text-base sm:text-lg text-foreground/70 mb-6">{current.description}</p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
             {current.features.map((feature, idx) => (
               <div key={idx} className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full" />
