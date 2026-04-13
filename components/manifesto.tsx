@@ -144,7 +144,7 @@ Simple.`
                 ))}
                 <div className="py-12 flex justify-center">
                   <Image
-                    src="/images/simpler-logo-white.png"
+                    src="/images/simpler-logo.png"
                     alt="Simpler"
                     width={280}
                     height={120}
