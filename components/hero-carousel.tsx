@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { ChevronRight } from 'lucide-react'
+import Image from 'next/image'
 
 const products = [
   {
@@ -53,6 +54,17 @@ export function HeroCarousel() {
               }`}
             >
               <div className="text-left">
+                {product.id === 'remesas' && (
+                  <div className="mb-3">
+                    <Image
+                      src="/images/remesas-icon.png"
+                      alt="Remesas"
+                      width={32}
+                      height={32}
+                      className="w-8 h-8"
+                    />
+                  </div>
+                )}
                 <h3 className="font-bold text-lg sm:text-xl text-foreground mb-1">{product.name}</h3>
                 <p className="text-sm text-foreground/60">{product.subtitle}</p>
               </div>
