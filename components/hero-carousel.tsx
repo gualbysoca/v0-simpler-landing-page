@@ -90,36 +90,14 @@ export function HeroCarousel() {
             <p className="text-base sm:text-lg text-foreground/70 mb-6">{current.subdescription}</p>
           )}
 
-          {current.id === 'remesas' && current.features ? (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-              {current.features.map((feature, idx) => (
-                <div key={idx} className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-primary rounded-full" />
-                  <p className="text-sm text-foreground/60">{feature}</p>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-              {current.features.map((feature, idx) => (
-                <div key={idx} className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-primary rounded-full" />
-                  <p className="text-sm text-foreground/60">{feature}</p>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {current.id !== 'remesas' && (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-              {current.features.map((feature, idx) => (
-                <div key={idx} className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-primary rounded-full" />
-                  <p className="text-sm text-foreground/60">{feature}</p>
-                </div>
-              ))}
-            </div>
-          )}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+            {current.features.map((feature, idx) => (
+              <div key={idx} className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-primary rounded-full" />
+                <p className="text-sm text-foreground/60">{feature}</p>
+              </div>
+            ))}
+          </div>
 
           <button className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition">
             {current.id === 'remesas' ? 'Enviar Remesa' : 'Comprar USDT'}
