@@ -47,24 +47,26 @@ export function HeroCarousel() {
             <button
               key={product.id}
               onClick={() => setActiveProduct(idx)}
-              className={`p-4 sm:p-6 rounded-xl border-2 transition-all duration-300 ${
+              className={`p-4 sm:p-6 rounded-xl border-2 transition-all duration-300 flex items-center gap-4 ${
                 activeProduct === idx
                   ? 'border-primary bg-primary/5 shadow-lg'
                   : 'border-border bg-card hover:border-primary/50'
               }`}
             >
-              <div className="text-left">
-                {product.id === 'remesas' && (
-                  <div className="mb-3 w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+              {product.id === 'remesas' && (
+                <div className="w-1/3 flex items-center justify-center flex-shrink-0">
+                  <div className="w-24 h-24 bg-primary rounded-full flex items-center justify-center">
                     <Image
                       src="/images/remesas-icon.png"
                       alt="Remesas"
-                      width={24}
-                      height={24}
-                      className="w-6 h-6 object-contain"
+                      width={56}
+                      height={56}
+                      className="w-14 h-14 object-contain"
                     />
                   </div>
-                )}
+                </div>
+              )}
+              <div className={product.id === 'remesas' ? 'w-2/3 text-left' : 'w-full text-left'}>
                 <h3 className="font-bold text-lg sm:text-xl text-foreground mb-1">{product.name}</h3>
                 <p className="text-sm text-foreground/60">{product.subtitle}</p>
               </div>
