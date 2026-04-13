@@ -151,6 +151,7 @@ Simple.`
                     className="h-24 w-auto"
                   />
                 </div>
+                <div className="h-80" />
                 {manifestoText.split('\n\n').map((paragraph, idx) => (
                   <p key={`second-${idx}`} className="text-sm sm:text-base">
                     {paragraph}
