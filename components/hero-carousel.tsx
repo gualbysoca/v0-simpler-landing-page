@@ -53,12 +53,12 @@ export function HeroCarousel() {
                   : 'border-border bg-card hover:border-primary/50'
               }`}
             >
-              {product.id === 'remesas' && (
+              {(product.id === 'remesas' || product.id === 'usdt') && (
                 <div className="w-1/3 flex items-center justify-center flex-shrink-0">
                   <div className="w-24 h-24 bg-primary rounded-full flex items-center justify-center">
                     <Image
-                      src="/images/remesas-icon.png"
-                      alt="Remesas"
+                      src={product.id === 'remesas' ? '/images/remesas-icon.png' : '/images/usdt-icon.png'}
+                      alt={product.name}
                       width={56}
                       height={56}
                       className="w-14 h-14 object-contain"
@@ -66,7 +66,7 @@ export function HeroCarousel() {
                   </div>
                 </div>
               )}
-              <div className={product.id === 'remesas' ? 'w-2/3 text-left' : 'w-full text-left'}>
+              <div className={(product.id === 'remesas' || product.id === 'usdt') ? 'w-2/3 text-left' : 'w-full text-left'}>
                 <h3 className="font-bold text-lg sm:text-xl text-foreground mb-1">{product.name}</h3>
                 <p className="text-sm text-foreground/60">{product.subtitle}</p>
               </div>
