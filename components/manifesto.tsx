@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { Volume2 } from 'lucide-react'
 
 export function Manifesto() {
   const [speed, setSpeed] = useState(100)
@@ -89,20 +88,26 @@ Simple.`
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-12 text-center">
           El manifiesto Simpler
         </h2>
-        <div className="flex gap-6 items-start">
+        <div className="flex gap-8 items-center">
           {/* Speed Control */}
-          <div className="flex flex-col items-center gap-4 pt-8">
-            <Volume2 className="w-5 h-5 text-primary" />
-            <input
-              type="range"
-              min="10"
-              max="200"
-              value={speed}
-              onChange={(e) => setSpeed(Number(e.target.value))}
-              className="w-8 h-32 -rotate-90 origin-center"
-              style={{ cursor: 'pointer' }}
-            />
-            <span className="text-xs text-foreground/60 font-medium">{speed}%</span>
+          <div className="flex flex-col items-center gap-6">
+            <div className="w-20 h-20 flex items-center justify-center">
+              <input
+                type="range"
+                min="10"
+                max="200"
+                value={speed}
+                onChange={(e) => setSpeed(Number(e.target.value))}
+                className="w-20 h-20 rounded-full cursor-pointer appearance-none bg-gradient-to-r from-primary/20 to-primary/40"
+                style={{
+                  accentColor: 'var(--primary, #9B6DD0)',
+                }}
+              />
+            </div>
+            <div className="text-center">
+              <p className="text-2xl font-bold text-primary mb-2">{speed}%</p>
+              <p className="text-xs text-foreground/60">Velocidad</p>
+            </div>
           </div>
 
           {/* Manifesto Card */}
