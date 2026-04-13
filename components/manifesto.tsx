@@ -2,10 +2,12 @@
 
 import { useState, useRef } from 'react'
 import Image from 'next/image'
+import { Play, Pause } from 'lucide-react'
 
 export function Manifesto() {
   const [speed, setSpeed] = useState(100)
   const [isUserScrolling, setIsUserScrolling] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(true)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const scrollTimeoutRef = useRef<NodeJS.Timeout>()
   
@@ -139,7 +141,7 @@ Simple.`
               onWheel={handleWheel}
               className="h-80 overflow-hidden relative"
             >
-              <div className={`whitespace-pre-line text-white leading-relaxed font-light text-center space-y-4 manifesto-scroll ${isUserScrolling ? 'paused' : ''}`} style={{ willChange: 'transform' }}>
+              <div className={`whitespace-pre-line text-white leading-relaxed font-light text-center space-y-4 manifesto-scroll ${!isPlaying || isUserScrolling ? 'paused' : ''}`} style={{ willChange: 'transform' }}>
                 {manifestoText.split('\n\n').map((paragraph, idx) => (
                   <p key={`first-${idx}`} className="text-sm sm:text-base">
                     {paragraph}
@@ -166,17 +168,30 @@ Simple.`
 
           {/* Speed Control - Horizontal Bar */}
           <div className="flex flex-col items-center gap-4">
-            <input
-              type="range"
-              min="10"
-              max="200"
-              value={speed}
-              onChange={(e) => setSpeed(Number(e.target.value))}
-              className="w-64 h-2 cursor-pointer"
-              style={{
-                accentColor: 'var(--primary, #9B6DD0)',
-              }}
-            />
+            <div className="flex items-center gap-6">
+              <button
+                onClick={() => setIsPlaying(!isPlaying)}
+                className="p-3 rounded-full bg-primary text-white hover:bg-primary/90 transition"
+                aria-label={isPlaying ? 'Pause' : 'Play'}
+              >
+                {isPlaying ? (
+                  <Pause className="w-6 h-6" />
+                ) : (
+                  <Play className="w-6 h-6" />
+                )}
+              </button>
+              <input
+                type="range"
+                min="10"
+                max="200"
+                value={speed}
+                onChange={(e) => setSpeed(Number(e.target.value))}
+                className="w-64 h-2 cursor-pointer"
+                style={{
+                  accentColor: 'var(--primary, #9B6DD0)',
+                }}
+              />
+            </div>
             <div className="text-center">
               <p className="text-lg font-bold text-primary">{speed}% - Velocidad</p>
             </div>
