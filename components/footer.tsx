@@ -132,20 +132,17 @@ export function Footer() {
         {/* Divider */}
         <div className="h-px bg-background/10 mb-12" />
 
-        {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Logo & Branding */}
-          <div className="w-full md:w-auto">
-            <h2 className="text-4xl md:text-6xl font-light text-background tracking-tight">
+        {/* Bottom Section - Full Width Logo */}
+        <div className="flex flex-col gap-4">
+          {/* Full Width Brand Name */}
+          <div className="w-full -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
+            <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-background tracking-tighter leading-none">
               Simpler
             </h2>
-            <p className="text-xs text-background/60 mt-2">
-              Remesas y USDT simplificados
-            </p>
           </div>
 
           {/* Bottom Info */}
-          <div className="text-xs text-background/60 space-y-1 text-center md:text-right">
+          <div className="text-xs text-background/60 space-y-1">
             <p>&copy; 2024 Simpler. Todos los derechos reservados.</p>
             <p className="text-background/50">
               USDT es un Activo Virtual. Consulta regulaciones locales antes de usar.
