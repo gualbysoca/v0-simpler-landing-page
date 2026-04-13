@@ -120,15 +120,18 @@ Simple.`
                 0% {
                   transform: translateY(0);
                 }
-                100% {
+                99.99% {
                   transform: translateY(-50%);
+                }
+                100% {
+                  transform: translateY(0);
                 }
               }
               .manifesto-scroll {
-                animation: scrollUp ${animationDuration}s linear infinite;
+                animation: scrollUp ${animationDuration}s linear infinite !important;
               }
               .manifesto-scroll.paused {
-                animation-play-state: paused;
+                animation-play-state: paused !important;
               }
             `}</style>
             <div 
@@ -136,7 +139,7 @@ Simple.`
               onWheel={handleWheel}
               className="h-80 overflow-hidden relative"
             >
-              <div className={`whitespace-pre-line text-white leading-relaxed font-light text-center space-y-4 manifesto-scroll ${isUserScrolling ? 'paused' : ''}`}>
+              <div className={`whitespace-pre-line text-white leading-relaxed font-light text-center space-y-4 manifesto-scroll ${isUserScrolling ? 'paused' : ''}`} style={{ willChange: 'transform' }}>
                 {manifestoText.split('\n\n').map((paragraph, idx) => (
                   <p key={`first-${idx}`} className="text-sm sm:text-base">
                     {paragraph}
