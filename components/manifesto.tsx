@@ -20,9 +20,6 @@ Simple de entender.
 Simple de usar.
 Simple de confiar.
 
-Porque lo complejo no es inteligente.
-La verdadera inteligencia es invisible.
-
 Simpler no es una app.
 Es una arquitectura.
 Un sistema vivo de microservicios financieros
