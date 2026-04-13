@@ -23,7 +23,8 @@ const products = [
   {
     id: 'usdt',
     name: 'USDT',
-    description: 'Acceso a activos virtuales con transparencia total',
+    description: 'Compra USDT fácil y seguro',
+    subdescription: 'Intercambia Bolivianos por USDT en minutos',
     subtitle: 'Activo Virtual regulado y seguro',
     features: ['Precio en tiempo real', 'Operaciones 24/7', 'Máxima seguridad']
   }
@@ -85,7 +86,10 @@ export function HeroCarousel() {
         {/* Product Details */}
         <div className="bg-card border border-border rounded-2xl p-8 sm:p-12 mb-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">{current.name}</h2>
-          <p className="text-base sm:text-lg text-foreground/70 mb-6">{current.description}</p>
+          <p className="text-base sm:text-lg text-foreground/70 mb-2">{current.description}</p>
+          {current.subdescription && (
+            <p className="text-base sm:text-lg text-foreground/70 mb-6">{current.subdescription}</p>
+          )}
 
           {current.id === 'remesas' && current.countries ? (
             <div className="mb-6">
