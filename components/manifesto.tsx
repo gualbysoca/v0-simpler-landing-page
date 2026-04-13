@@ -80,12 +80,27 @@ Simple.`
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
       <div className="max-w-4xl mx-auto">
         <div className="bg-card border border-border rounded-2xl p-8 sm:p-12">
-          <div className="whitespace-pre-line text-foreground/80 leading-relaxed font-light text-center space-y-4">
-            {manifestoText.split('\n\n').map((paragraph, idx) => (
-              <p key={idx} className="text-sm sm:text-base">
-                {paragraph}
-              </p>
-            ))}
+          <style>{`
+            @keyframes scrollUp {
+              0% {
+                transform: translateY(0);
+              }
+              100% {
+                transform: translateY(-100%);
+              }
+            }
+            .manifesto-scroll {
+              animation: scrollUp 40s linear infinite;
+            }
+          `}</style>
+          <div className="h-80 overflow-hidden relative">
+            <div className="whitespace-pre-line text-foreground/80 leading-relaxed font-light text-center space-y-4 manifesto-scroll">
+              {manifestoText.split('\n\n').map((paragraph, idx) => (
+                <p key={idx} className="text-sm sm:text-base">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
       </div>
