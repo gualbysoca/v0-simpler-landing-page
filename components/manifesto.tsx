@@ -1,9 +1,18 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 export function Manifesto() {
   const [speed, setSpeed] = useState(100)
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault()
+    if (scrollContainerRef.current) {
+      const scrollAmount = (e.deltaY * speed) / 100
+      scrollContainerRef.current.scrollTop += scrollAmount
+    }
+  }
   
   const manifestoText = `THIS IS SIMPLER.
 
@@ -112,21 +121,13 @@ Simple.`
 
           {/* Manifesto Card */}
           <div className="flex-1 bg-card border border-border rounded-2xl p-8 sm:p-12">
-            <style>{`
-              @keyframes scrollUp {
-                0% {
-                  transform: translateY(0);
-                }
-                100% {
-                  transform: translateY(-100%);
-                }
-              }
-              .manifesto-scroll {
-                animation: scrollUp ${animationDuration}s linear infinite;
-              }
-            `}</style>
-            <div className="h-80 overflow-hidden relative">
-              <div className="whitespace-pre-line text-foreground/80 leading-relaxed font-light text-center space-y-4 manifesto-scroll">
+            <div 
+              ref={scrollContainerRef}
+              onWheel={handleWheel}
+              className="h-80 overflow-y-scroll overflow-x-hidden relative scroll-smooth"
+              style={{ scrollBehavior: 'smooth' }}
+            >
+              <div className="whitespace-pre-line text-foreground/80 leading-relaxed font-light text-center space-y-4">
                 {manifestoText.split('\n\n').map((paragraph, idx) => (
                   <p key={idx} className="text-sm sm:text-base">
                     {paragraph}
