@@ -10,14 +10,13 @@ const products = [
     name: 'Remesas',
     description: 'Envía dinero a tus seres queridos en Bolivia',
     subtitle: 'Transacciones internacionales simplificadas',
-    features: ['Comisiones bajas', 'Velocidad garantizada', 'Múltiples monedas'],
-    countries: [
-      { name: 'España', flag: '🇪🇸' },
-      { name: 'Estados Unidos', flag: '🇺🇸' },
-      { name: 'Argentina', flag: '🇦🇷' },
-      { name: 'Brasil', flag: '🇧🇷' },
-      { name: 'Chile', flag: '🇨🇱' },
-      { name: 'Perú', flag: '🇵🇪' }
+    features: [
+      '🇪🇸 España',
+      '🇺🇸 Estados Unidos',
+      '🇦🇷 Argentina',
+      '🇧🇷 Brasil',
+      '🇨🇱 Chile',
+      '🇵🇪 Perú'
     ]
   },
   {
@@ -91,16 +90,14 @@ export function HeroCarousel() {
             <p className="text-base sm:text-lg text-foreground/70 mb-6">{current.subdescription}</p>
           )}
 
-          {current.id === 'remesas' && current.countries ? (
-            <div className="mb-6">
-              <p className="text-sm text-foreground/60 mb-4">
-                Desde {current.countries.map((country, idx) => (
-                  <span key={country.name}>
-                    <span className="text-lg">{country.flag}</span> {country.name}
-                    {idx < current.countries.length - 1 ? ', ' : ''}
-                  </span>
-                ))} de forma rápida y segura.
-              </p>
+          {current.id === 'remesas' && current.features ? (
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+              {current.features.map((feature, idx) => (
+                <div key={idx} className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-primary rounded-full" />
+                  <p className="text-sm text-foreground/60">{feature}</p>
+                </div>
+              ))}
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
