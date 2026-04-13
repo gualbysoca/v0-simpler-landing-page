@@ -47,15 +47,15 @@ export function HeroCarousel() {
             <button
               key={product.id}
               onClick={() => setActiveProduct(idx)}
-              className={`p-4 sm:p-6 rounded-xl border-2 transition-all duration-300 flex flex-col items-center text-center ${
+              className={`p-4 sm:p-6 rounded-xl border-2 transition-all duration-300 ${
                 activeProduct === idx
                   ? 'border-primary bg-primary/5 shadow-lg'
                   : 'border-border bg-card hover:border-primary/50'
               }`}
             >
-              <div className="w-full">
+              <div className="text-left">
                 {product.id === 'remesas' && (
-                  <div className="mb-3 w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mx-auto">
+                  <div className="mb-3 w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
                     <Image
                       src="/images/remesas-icon.png"
                       alt="Remesas"
