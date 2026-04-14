@@ -2,18 +2,19 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
-import { Play, Pause } from 'lucide-react'
+import { Play, Pause, ChevronUp } from 'lucide-react'
 
 export function Manifesto() {
   const [speedMultiplier, setSpeedMultiplier] = useState(1)
   const [isUserScrolling, setIsUserScrolling] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
+  const [isSpeedMenuOpen, setIsSpeedMenuOpen] = useState(false)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const manifestoSectionRef = useRef<HTMLDivElement>(null)
   const scrollTimeoutRef = useRef<NodeJS.Timeout>()
   
-  const speedOptions = [1, 1.25, 1.5, 1.75, 2]
+  const speedOptions = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
   
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault()
@@ -202,7 +203,7 @@ Simple.`
             </div>
           </div>
 
-          {/* Speed Control - Buttons */}
+          {/* Speed Control - Collapsible Menu */}
           <div className="flex flex-col items-center gap-4">
             <div className="flex items-center gap-4">
               <button
@@ -216,24 +217,47 @@ Simple.`
                   <Play className="w-6 h-6" />
                 )}
               </button>
-              <div className="flex gap-2">
-                {speedOptions.map((option) => (
-                  <button
-                    key={option}
-                    onClick={() => setSpeedMultiplier(option)}
-                    className={`px-4 py-2 rounded-full font-bold transition ${
-                      speedMultiplier === option
-                        ? 'bg-primary text-white'
-                        : 'bg-primary/20 text-primary hover:bg-primary/40'
+              
+              {/* Collapsible Speed Menu */}
+              <div className="relative">
+                <button
+                  onClick={() => setIsSpeedMenuOpen(!isSpeedMenuOpen)}
+                  className={`px-4 py-2 rounded-full font-bold transition flex items-center gap-2 ${
+                    isSpeedMenuOpen
+                      ? 'bg-primary text-white'
+                      : 'bg-primary/20 text-primary hover:bg-primary/40'
+                  }`}
+                >
+                  x{speedMultiplier}
+                  <ChevronUp
+                    className={`w-4 h-4 transition-transform ${
+                      isSpeedMenuOpen ? 'rotate-180' : ''
                     }`}
-                  >
-                    x{option}
-                  </button>
-                ))}
+                  />
+                </button>
+
+                {/* Speed Menu Dropdown */}
+                {isSpeedMenuOpen && (
+                  <div className="absolute bottom-full left-0 mb-2 bg-background border border-border rounded-lg shadow-lg overflow-hidden z-50">
+                    {speedOptions.map((option) => (
+                      <button
+                        key={option}
+                        onClick={() => {
+                          setSpeedMultiplier(option)
+                          setIsSpeedMenuOpen(false)
+                        }}
+                        className={`w-full px-6 py-3 text-left transition ${
+                          speedMultiplier === option
+                            ? 'bg-primary text-white font-bold'
+                            : 'bg-background text-foreground hover:bg-primary/10'
+                        }`}
+                      >
+                        {option}x
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
-            </div>
-            <div className="text-center">
-              <p className="text-lg font-bold text-primary">Velocidad: x{speedMultiplier}</p>
             </div>
           </div>
         </div>
