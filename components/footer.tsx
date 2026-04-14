@@ -35,7 +35,7 @@ const footerSections = [
 
 export function Footer() {
   const [isRegulatoryOpen, setIsRegulatoryOpen] = useState(false)
-  
+
   return (
     <footer className="bg-black text-background border-t border-background/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -76,11 +76,11 @@ export function Footer() {
                 <p className="font-semibold text-background text-sm">Información Regulatoria</p>
                 <p className="text-xs text-background/60">Lee nuestros términos y disclaimers</p>
               </div>
-              <ChevronDown 
+              <ChevronDown
                 className={`w-5 h-5 text-background/60 transition-transform group-hover:text-background ${isRegulatoryOpen ? 'rotate-180' : ''}`}
               />
             </button>
-            
+
             {isRegulatoryOpen && (
               <div className="absolute top-full left-0 right-0 mt-2 p-4 rounded-xl bg-background/5 border border-background/10 space-y-3 animate-in fade-in duration-200 z-10">
                 <div className="text-xs text-background/70 space-y-3">
@@ -104,8 +104,8 @@ export function Footer() {
               <Image
                 src="/images/simpler-footer-logo.png"
                 alt="Simpler"
-                width={800}
-                height={200}
+                width={100 %}
+                //height={200}
                 className="w-full max-w-4xl h-auto"
                 priority
               />
