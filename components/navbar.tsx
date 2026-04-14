@@ -73,17 +73,7 @@ export function Navbar() {
         }`}
       >
         {/* Drawer header */}
-        <div className="flex items-center justify-between px-6 h-16 border-b border-border">
-          <div className="flex items-center gap-2">
-            <Image
-              src="/images/logo.png"
-              alt="Simpler"
-              width={28}
-              height={28}
-              className="h-7 w-7"
-            />
-            <span className="font-semibold text-foreground">Simpler</span>
-          </div>
+        <div className="flex items-center justify-end px-6 h-16 border-b border-border">
           <button
             onClick={() => setIsOpen(false)}
             className="p-2 rounded-md text-foreground/60 hover:text-foreground transition active:scale-95"
