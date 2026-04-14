@@ -35,17 +35,28 @@ export function HeroCarousel() {
 
   const current = products[activeProduct]
 
-  // Auto-scroll carousel in mobile when activeProduct changes
+  // Observe scroll to keep activeProduct in sync when user swipes
   useEffect(() => {
-    if (carouselRef.current) {
-      const carousel = carouselRef.current
-      const scrollAmount = carousel.children[activeProduct]?.clientWidth || 0
-      carousel.scrollTo({
-        left: scrollAmount * activeProduct + (activeProduct > 0 ? 16 * activeProduct : 0),
-        behavior: 'smooth'
-      })
+    const carousel = carouselRef.current
+    if (!carousel) return
+
+    const handleScroll = () => {
+      const itemWidth = carousel.offsetWidth
+      const newActive = Math.round(carousel.scrollLeft / itemWidth)
+      setActiveProduct(newActive)
     }
-  }, [activeProduct])
+
+    carousel.addEventListener('scroll', handleScroll, { passive: true })
+    return () => carousel.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Scroll to exact card by index
+  const scrollToProduct = (idx: number) => {
+    const carousel = carouselRef.current
+    if (!carousel) return
+    carousel.scrollTo({ left: carousel.offsetWidth * idx, behavior: 'smooth' })
+    setActiveProduct(idx)
+  }
 
   return (
     <section id="servicios" className="scroll-mt-24 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-gradient-to-b from-background via-background to-background">
@@ -82,13 +93,14 @@ export function HeroCarousel() {
       <div className="w-full max-w-4xl">
         {/* Mobile Carousel - Single card visible with horizontal scroll */}
         <div className="sm:hidden">
-          <div ref={carouselRef} className="overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-6">
-            <div className="flex gap-4 pb-4">
+          <div ref={carouselRef} className="overflow-x-auto snap-x snap-mandatory scrollbar-hide mb-4">
+            <div className="flex">
               {products.map((product, idx) => (
                 <button
                   key={product.id}
-                  onClick={() => setActiveProduct(idx)}
-                  className={`flex-shrink-0 w-full p-4 rounded-xl border-2 transition-all duration-300 flex items-center gap-4 snap-center ${
+                  onClick={() => scrollToProduct(idx)}
+                  style={{ width: '100%' }}
+                  className={`flex-shrink-0 p-4 rounded-xl border-2 transition-all duration-300 flex items-center gap-4 snap-start snap-always ${
                     activeProduct === idx
                       ? 'border-primary bg-primary/5 shadow-lg'
                       : 'border-border bg-card'
@@ -115,28 +127,19 @@ export function HeroCarousel() {
               ))}
             </div>
           </div>
-          
-          {/* Dot Indicators */}
-          <div className="flex items-center justify-center gap-2">
+
+          {/* Dash + Dot Indicators - same style as Características */}
+          <div className="flex items-center justify-center gap-3">
             {products.map((_, idx) => (
               <button
                 key={idx}
-                onClick={() => {
-                  setActiveProduct(idx)
-                  if (carouselRef.current) {
-                    const itemWidth = carouselRef.current.offsetWidth
-                    carouselRef.current.scrollTo({
-                      left: itemWidth * idx,
-                      behavior: 'smooth'
-                    })
-                  }
-                }}
+                onClick={() => scrollToProduct(idx)}
                 className={`transition-all duration-300 rounded-full ${
-                  idx === activeProduct 
-                    ? 'bg-primary w-3 h-3' 
+                  idx === activeProduct
+                    ? 'bg-primary w-5 h-2'
                     : 'bg-foreground/30 w-2 h-2'
                 }`}
-                aria-label={`Go to product ${idx + 1}`}
+                aria-label={`Ir al servicio ${idx + 1}`}
               />
             ))}
           </div>
