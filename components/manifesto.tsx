@@ -1,14 +1,16 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { Play, Pause } from 'lucide-react'
 
 export function Manifesto() {
   const [speed, setSpeed] = useState(100)
   const [isUserScrolling, setIsUserScrolling] = useState(false)
-  const [isPlaying, setIsPlaying] = useState(true)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const manifestoSectionRef = useRef<HTMLDivElement>(null)
   const scrollTimeoutRef = useRef<NodeJS.Timeout>()
   
   const handleWheel = (e: React.WheelEvent) => {
@@ -108,8 +110,32 @@ Simple.`
 
   const animationDuration = (100 / speed) * 60
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          setIsPlaying(true)
+        } else {
+          setIsPlaying(false)
+        }
+      },
+      { threshold: 0.3 }
+    )
+
+    if (manifestoSectionRef.current) {
+      observer.observe(manifestoSectionRef.current)
+    }
+
+    return () => {
+      if (manifestoSectionRef.current) {
+        observer.unobserve(manifestoSectionRef.current)
+      }
+    }
+  }, [])
+
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
+    <section ref={manifestoSectionRef} className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-12 text-center">
           El manifiesto Simpler
