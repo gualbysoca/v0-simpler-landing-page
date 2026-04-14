@@ -10,11 +10,19 @@ export function Manifesto() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const [isSpeedMenuOpen, setIsSpeedMenuOpen] = useState(false)
+  const [animationKey, setAnimationKey] = useState(0)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const manifestoSectionRef = useRef<HTMLDivElement>(null)
   const scrollTimeoutRef = useRef<NodeJS.Timeout>()
   
   const speedOptions = [0.5, 0.75, 1, 1.5, 2]
+  
+  const handleSpeedChange = (newSpeed: number) => {
+    // Pause, change speed, then resume with new key to reset animation smoothly
+    setAnimationKey(prev => prev + 1)
+    setSpeedMultiplier(newSpeed)
+    setIsSpeedMenuOpen(false)
+  }
   
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault()
@@ -168,7 +176,7 @@ Simple.`
               onWheel={handleWheel}
               className="h-80 overflow-hidden relative"
             >
-              <div className={`whitespace-pre-line text-white leading-relaxed font-light text-center space-y-4 manifesto-scroll ${!isPlaying || isUserScrolling ? 'paused' : ''}`} style={{ willChange: 'transform' }}>
+              <div className={`whitespace-pre-line text-white leading-relaxed font-light text-center space-y-4 manifesto-scroll ${!isPlaying || isUserScrolling ? 'paused' : ''}`} key={animationKey} style={{ willChange: 'transform' }}>
                 <div className="h-80" />
                 {manifestoText.split('\n\n').map((paragraph, idx) => (
                   <p key={`first-${idx}`} className="text-sm sm:text-base">
@@ -244,8 +252,7 @@ Simple.`
                       <button
                         key={option}
                         onClick={() => {
-                          setSpeedMultiplier(option)
-                          setIsSpeedMenuOpen(false)
+                          handleSpeedChange(option)
                         }}
                         className={`w-full px-6 py-3 text-left transition ${
                           speedMultiplier === option
