@@ -11,12 +11,12 @@ const products = [
     description: 'Envía dinero a tus seres queridos en Bolivia',
     subtitle: 'Transacciones internacionales simplificadas',
     features: [
-      '🇪🇸 España (proximamente)',
+      '🇪🇸 España',
       '🇺🇸 Estados Unidos',
-      '🇦🇷 Argentina (proximamente)',
-      '🇧🇷 Brasil (proximamente)',
-      '🇨🇱 Chile (proximamente)',
-      '🇵🇪 Perú (proximamente)'
+      '🇦🇷 Argentina',
+      '🇧🇷 Brasil',
+      '🇨🇱 Chile',
+      '🇵🇪 Perú'
     ]
   },
   {
