@@ -50,7 +50,7 @@ export function HeroCarousel() {
 
       {/* Product Details - Moved to top */}
       <div className="w-full max-w-4xl mb-8">
-        <div className="bg-card border border-border rounded-2xl p-8 sm:p-12 h-64 sm:h-72 flex flex-col justify-between">
+        <div className="bg-card border border-border rounded-2xl p-8 sm:p-12 flex flex-col justify-between">
           <div>
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">{current.name}</h2>
             <p className="text-base sm:text-lg text-foreground/70 mb-2">{current.description}</p>
