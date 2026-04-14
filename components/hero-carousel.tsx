@@ -35,7 +35,7 @@ export function HeroCarousel() {
   const current = products[activeProduct]
 
   return (
-    <section id="servicios" className="flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-gradient-to-b from-background via-background to-background">
+    <section id="servicios" className="scroll-mt-24 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-gradient-to-b from-background via-background to-background">
       {/* Product Details */}
       <div className="w-full max-w-4xl mb-8">
         <div className="bg-card border border-border rounded-2xl p-8 sm:p-12 flex flex-col justify-between">
