@@ -98,8 +98,7 @@ export function Footer() {
                 <li key={linkIdx}>
                   <a
                     href={link.href}
-                    className="text-background/70 hover:text-background transition text-xs sm:text-sm"
-                  >
+                    className="text-background/70 hover:text-background transition text-xs sm:text-sm">
                     {link.label}
                   </a>
                 </li>
