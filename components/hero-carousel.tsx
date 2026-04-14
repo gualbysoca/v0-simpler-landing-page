@@ -35,21 +35,9 @@ export function HeroCarousel() {
   const current = products[activeProduct]
 
   return (
-    <section id="nosotros" className="flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-gradient-to-b from-background via-background to-background">
-      <div className="max-w-4xl w-full text-center mb-12">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-balance text-foreground mb-4">
-          Simpler es...
-        </h1>
-        <p className="text-base sm:text-lg text-foreground/60 text-balance max-w-2xl mx-auto mb-8">
-          un ecosistema de "pequeños servicios financieros hipersimplificados" diseñados para solucionar necesidades específicas...
-        </p>
-        <div className="inline-block mb-4 px-4 py-2 bg-secondary/10 border border-secondary/30 rounded-full">
-          <p className="text-sm font-medium text-secondary">Nueva plataforma fintech</p>
-        </div>
-      </div>
-
-      {/* Product Details - Moved to top */}
-      <div id="servicios" className="w-full max-w-4xl mb-8">
+    <section id="servicios" className="flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-gradient-to-b from-background via-background to-background">
+      {/* Product Details */}
+      <div className="w-full max-w-4xl mb-8">
         <div className="bg-card border border-border rounded-2xl p-8 sm:p-12 flex flex-col justify-between">
           <div>
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">{current.name}</h2>
@@ -72,7 +60,7 @@ export function HeroCarousel() {
         </div>
       </div>
 
-      {/* Interactive Product Cards - Below details */}
+      {/* Interactive Product Cards */}
       <div className="w-full max-w-4xl">
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
           {products.map((product, idx) => (
