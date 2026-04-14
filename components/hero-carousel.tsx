@@ -50,20 +50,22 @@ export function HeroCarousel() {
 
       {/* Product Details - Moved to top */}
       <div className="w-full max-w-4xl mb-8">
-        <div className="bg-card border border-border rounded-2xl p-8 sm:p-12">
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">{current.name}</h2>
-          <p className="text-base sm:text-lg text-foreground/70 mb-2">{current.description}</p>
-          {current.subdescription && (
-            <p className="text-base sm:text-lg text-foreground/70 mb-6">{current.subdescription}</p>
-          )}
+        <div className="bg-card border border-border rounded-2xl p-8 sm:p-12 h-64 sm:h-72 flex flex-col justify-between">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">{current.name}</h2>
+            <p className="text-base sm:text-lg text-foreground/70 mb-2">{current.description}</p>
+            {current.subdescription && (
+              <p className="text-base sm:text-lg text-foreground/70 mb-6">{current.subdescription}</p>
+            )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-            {current.features.map((feature, idx) => (
-              <p key={idx} className="text-sm text-foreground/60">{feature}</p>
-            ))}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+              {current.features.map((feature, idx) => (
+                <p key={idx} className="text-sm text-foreground/60">{feature}</p>
+              ))}
+            </div>
           </div>
 
-          <button className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition">
+          <button className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition w-fit">
             {current.id === 'remesas' ? 'Enviar Remesa' : 'Comprar USDT'}
             <ChevronRight className="w-5 h-5" />
           </button>
