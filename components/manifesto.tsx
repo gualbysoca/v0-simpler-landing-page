@@ -148,15 +148,13 @@ Simple.`
                 0% {
                   transform: translateY(0);
                 }
-                99.99% {
-                  transform: translateY(-50%);
-                }
                 100% {
-                  transform: translateY(0);
+                  transform: translateY(-50%);
                 }
               }
               .manifesto-scroll {
                 animation: scrollUp ${animationDuration}s linear infinite !important;
+                animation-timing-function: linear !important;
               }
               .manifesto-scroll.paused {
                 animation-play-state: paused !important;
