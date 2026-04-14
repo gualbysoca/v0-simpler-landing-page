@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { ChevronRight, Menu, X } from 'lucide-react'
 import Image from 'next/image'
 
@@ -31,8 +31,21 @@ const products = [
 
 export function HeroCarousel() {
   const [activeProduct, setActiveProduct] = useState(0)
+  const carouselRef = useRef<HTMLDivElement>(null)
 
   const current = products[activeProduct]
+
+  // Auto-scroll carousel in mobile when activeProduct changes
+  useEffect(() => {
+    if (carouselRef.current) {
+      const carousel = carouselRef.current
+      const scrollAmount = carousel.children[activeProduct]?.clientWidth || 0
+      carousel.scrollTo({
+        left: scrollAmount * activeProduct + (activeProduct > 0 ? 16 * activeProduct : 0),
+        behavior: 'smooth'
+      })
+    }
+  }, [activeProduct])
 
   return (
     <section id="servicios" className="scroll-mt-24 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-gradient-to-b from-background via-background to-background">
@@ -69,7 +82,7 @@ export function HeroCarousel() {
       <div className="w-full max-w-4xl">
         {/* Mobile Carousel - Single card visible with horizontal scroll */}
         <div className="sm:hidden">
-          <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+          <div ref={carouselRef} className="overflow-x-auto snap-x snap-mandatory scrollbar-hide">
             <div className="flex gap-4 pb-4">
               {products.map((product, idx) => (
                 <button
