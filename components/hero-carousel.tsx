@@ -44,7 +44,7 @@ export function HeroCarousel() {
           Simpler es...
         </h1>
         <p className="text-base sm:text-lg text-foreground/60 text-balance max-w-2xl mx-auto mb-8">
-          Remesas rápidas y USDT seguro. Toda la tecnología fintech que necesitas en una plataforma confiable.
+          un ecosistema de "pequeños servicios financieros hipersimplificados" diseñados para solucionar necesidades específicas...
         </p>
       </div>
 
