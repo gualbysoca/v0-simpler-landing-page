@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { Mail, MapPin, ChevronDown } from 'lucide-react'
+import { Mail, MapPin, ChevronDown, Shield } from 'lucide-react'
 import { useState } from 'react'
 
 const footerSections = [
@@ -103,7 +103,7 @@ export function Footer() {
                 onClick={() => setIsRegulatoryOpen(!isRegulatoryOpen)}
                 className="w-full flex items-center gap-3 px-4 py-3 rounded-full bg-background/10 border border-background/20 hover:bg-background/15 transition group"
               >
-                <span className="text-2xl">🍪</span>
+                <Shield className="w-6 h-6 text-background flex-shrink-0" />
                 <div className="flex-1 text-left">
                   <p className="font-semibold text-background text-sm">Información Regulatoria</p>
                   <p className="text-xs text-background/60">Lee nuestros términos y disclaimers</p>
