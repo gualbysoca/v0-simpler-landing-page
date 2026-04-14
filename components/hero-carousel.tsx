@@ -65,38 +65,78 @@ export function HeroCarousel() {
         </div>
       </div>
 
-      {/* Interactive Product Cards */}
+      {/* Interactive Product Cards - Grid on desktop, Carousel on mobile */}
       <div className="w-full max-w-4xl">
-        <div className="grid grid-cols-2 gap-3 sm:gap-4">
-          {products.map((product, idx) => (
-            <button
-              key={product.id}
-              onClick={() => setActiveProduct(idx)}
-              className={`p-4 sm:p-6 rounded-xl border-2 transition-all duration-300 flex items-center gap-4 ${
-                activeProduct === idx
-                  ? 'border-primary bg-primary/5 shadow-lg'
-                  : 'border-border bg-card hover:border-primary/50'
-              }`}
-            >
-              {(product.id === 'remesas' || product.id === 'usdt') && (
-                <div className="w-1/3 flex items-center justify-center flex-shrink-0">
-                  <div className="w-24 h-24 bg-primary rounded-full flex items-center justify-center">
-                    <Image
-                      src={product.id === 'remesas' ? '/images/remesas-icon.png' : '/images/usdt-icon.png'}
-                      alt={product.name}
-                      width={56}
-                      height={56}
-                      className="w-14 h-14 object-contain"
-                    />
+        {/* Mobile Carousel - Single card visible with horizontal scroll */}
+        <div className="sm:hidden">
+          <div className="overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+            <div className="flex gap-4 pb-4">
+              {products.map((product, idx) => (
+                <button
+                  key={product.id}
+                  onClick={() => setActiveProduct(idx)}
+                  className={`flex-shrink-0 w-full p-4 rounded-xl border-2 transition-all duration-300 flex items-center gap-4 snap-center ${
+                    activeProduct === idx
+                      ? 'border-primary bg-primary/5 shadow-lg'
+                      : 'border-border bg-card'
+                  }`}
+                >
+                  {(product.id === 'remesas' || product.id === 'usdt') && (
+                    <div className="flex-shrink-0">
+                      <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
+                        <Image
+                          src={product.id === 'remesas' ? '/images/remesas-icon.png' : '/images/usdt-icon.png'}
+                          alt={product.name}
+                          width={40}
+                          height={40}
+                          className="w-10 h-10 object-contain"
+                        />
+                      </div>
+                    </div>
+                  )}
+                  <div className="text-left min-w-0">
+                    <h3 className="font-bold text-base text-foreground mb-1">{product.name}</h3>
+                    <p className="text-xs text-foreground/60 line-clamp-2">{product.subtitle}</p>
                   </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden sm:block">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
+            {products.map((product, idx) => (
+              <button
+                key={product.id}
+                onClick={() => setActiveProduct(idx)}
+                className={`p-4 sm:p-6 rounded-xl border-2 transition-all duration-300 flex items-center gap-4 ${
+                  activeProduct === idx
+                    ? 'border-primary bg-primary/5 shadow-lg'
+                    : 'border-border bg-card hover:border-primary/50'
+                }`}
+              >
+                {(product.id === 'remesas' || product.id === 'usdt') && (
+                  <div className="w-1/3 flex items-center justify-center flex-shrink-0">
+                    <div className="w-24 h-24 bg-primary rounded-full flex items-center justify-center">
+                      <Image
+                        src={product.id === 'remesas' ? '/images/remesas-icon.png' : '/images/usdt-icon.png'}
+                        alt={product.name}
+                        width={56}
+                        height={56}
+                        className="w-14 h-14 object-contain"
+                      />
+                    </div>
+                  </div>
+                )}
+                <div className={(product.id === 'remesas' || product.id === 'usdt') ? 'w-2/3 text-left' : 'w-full text-left'}>
+                  <h3 className="font-bold text-lg sm:text-xl text-foreground mb-1">{product.name}</h3>
+                  <p className="text-sm text-foreground/60">{product.subtitle}</p>
                 </div>
-              )}
-              <div className={(product.id === 'remesas' || product.id === 'usdt') ? 'w-2/3 text-left' : 'w-full text-left'}>
-                <h3 className="font-bold text-lg sm:text-xl text-foreground mb-1">{product.name}</h3>
-                <p className="text-sm text-foreground/60">{product.subtitle}</p>
-              </div>
-            </button>
-          ))}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </section>
