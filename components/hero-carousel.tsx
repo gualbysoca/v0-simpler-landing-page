@@ -60,37 +60,10 @@ export function HeroCarousel() {
 
   return (
     <section id="servicios" className="scroll-mt-24 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-gradient-to-b from-background via-background to-background">
-      {/* Product Details - Always visible on mobile, shown above carousel */}
-      <div className="w-full max-w-4xl mb-8">
-        <div className="bg-card border border-border rounded-2xl p-4 sm:p-8 lg:p-12 flex flex-col justify-between">
-          <div>
-            <h2 className="text-xl sm:text-3xl lg:text-3xl font-bold text-foreground mb-2 sm:mb-3">{current.name}</h2>
-            <p className="text-sm sm:text-base lg:text-lg text-foreground/70 mb-1 sm:mb-2">{current.description}</p>
-            {current.subdescription && (
-              <p className="text-sm sm:text-base lg:text-lg text-foreground/70 mb-4 sm:mb-6">{current.subdescription}</p>
-            )}
 
-            <div className="mb-4 sm:mb-6">
-              <ul className="flex flex-wrap gap-2 sm:gap-6 items-center justify-center sm:justify-start">
-                {current.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-foreground/60">
-                    <span className="text-primary">•</span>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <button className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition w-fit text-sm sm:text-base">
-            {current.id === 'remesas' ? 'Enviar Remesa' : 'Comprar USDT'}
-            <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5" />
-          </button>
-        </div>
-      </div>
 
       {/* Interactive Product Cards - Grid on desktop, Carousel on mobile */}
-      <div className="w-full max-w-4xl">
+      <div className="w-full max-w-4xl mb-8">
         {/* Mobile Carousel - Single card visible with horizontal scroll */}
         <div className="sm:hidden">
           <div ref={carouselRef} className="overflow-x-auto snap-x snap-mandatory scrollbar-hide mb-4">
@@ -100,11 +73,10 @@ export function HeroCarousel() {
                   key={product.id}
                   onClick={() => scrollToProduct(idx)}
                   style={{ width: '100%' }}
-                  className={`flex-shrink-0 p-4 rounded-xl border-2 transition-all duration-300 flex items-center gap-4 snap-start snap-always ${
-                    activeProduct === idx
-                      ? 'border-primary bg-primary/5 shadow-lg'
-                      : 'border-border bg-card'
-                  }`}
+                  className={`flex-shrink-0 p-4 rounded-xl border-2 transition-all duration-300 flex items-center gap-4 snap-start snap-always ${activeProduct === idx
+                    ? 'border-primary bg-primary/5 shadow-lg'
+                    : 'border-border bg-card'
+                    }`}
                 >
                   {(product.id === 'remesas' || product.id === 'usdt') && (
                     <div className="flex-shrink-0">
@@ -134,11 +106,10 @@ export function HeroCarousel() {
               <button
                 key={idx}
                 onClick={() => scrollToProduct(idx)}
-                className={`transition-all duration-300 rounded-full ${
-                  idx === activeProduct
-                    ? 'bg-primary w-5 h-2'
-                    : 'bg-foreground/30 w-2 h-2'
-                }`}
+                className={`transition-all duration-300 rounded-full ${idx === activeProduct
+                  ? 'bg-primary w-5 h-2'
+                  : 'bg-foreground/30 w-2 h-2'
+                  }`}
                 aria-label={`Ir al servicio ${idx + 1}`}
               />
             ))}
@@ -152,11 +123,10 @@ export function HeroCarousel() {
               <button
                 key={product.id}
                 onClick={() => setActiveProduct(idx)}
-                className={`p-4 sm:p-6 rounded-xl border-2 transition-all duration-300 flex items-center gap-4 ${
-                  activeProduct === idx
-                    ? 'border-primary bg-primary/5 shadow-lg'
-                    : 'border-border bg-card hover:border-primary/50'
-                }`}
+                className={`p-4 sm:p-6 rounded-xl border-2 transition-all duration-300 flex items-center gap-4 ${activeProduct === idx
+                  ? 'border-primary bg-primary/5 shadow-lg'
+                  : 'border-border bg-card hover:border-primary/50'
+                  }`}
               >
                 {(product.id === 'remesas' || product.id === 'usdt') && (
                   <div className="w-1/3 flex items-center justify-center flex-shrink-0">
@@ -178,6 +148,35 @@ export function HeroCarousel() {
               </button>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Product Details - Always visible on mobile, shown above carousel */}
+      <div className="w-full max-w-4xl">
+        <div className="bg-card border border-border rounded-2xl p-4 sm:p-8 lg:p-12 flex flex-col justify-between">
+          <div>
+            <h2 className="text-xl sm:text-3xl lg:text-3xl font-bold text-foreground mb-2 sm:mb-3">{current.name}</h2>
+            <p className="text-sm sm:text-base lg:text-lg text-foreground/70 mb-1 sm:mb-2">{current.description}</p>
+            {current.subdescription && (
+              <p className="text-sm sm:text-base lg:text-lg text-foreground/70 mb-4 sm:mb-6">{current.subdescription}</p>
+            )}
+
+            <div className="mb-4 sm:mb-6">
+              <ul className="flex flex-wrap gap-2 sm:gap-6 items-center justify-center sm:justify-start">
+                {current.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-foreground/60">
+                    <span className="text-primary">•</span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <button className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition w-fit text-sm sm:text-base">
+            {current.id === 'remesas' ? 'Enviar Remesa' : 'Comprar USDT'}
+            <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5" />
+          </button>
         </div>
       </div>
     </section>
