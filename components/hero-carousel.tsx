@@ -41,7 +41,7 @@ export function HeroCarousel() {
           <p className="text-sm font-medium text-secondary">Nueva plataforma fintech</p>
         </div>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-balance text-foreground mb-4">
-          Transacciones que simplifican tu vida
+          Simpler es...
         </h1>
         <p className="text-base sm:text-lg text-foreground/60 text-balance max-w-2xl mx-auto mb-8">
           Remesas rápidas y USDT seguro. Toda la tecnología fintech que necesitas en una plataforma confiable.
