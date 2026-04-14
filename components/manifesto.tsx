@@ -149,7 +149,7 @@ Simple.`
                   transform: translateY(0);
                 }
                 100% {
-                  transform: translateY(-50%);
+                  transform: translateY(-100%);
                 }
               }
               .manifesto-scroll {
@@ -186,6 +186,16 @@ Simple.`
                     {paragraph}
                   </p>
                 ))}
+                <div className="py-12 flex justify-center">
+                  <Image
+                    src="/images/simpler-logo.png"
+                    alt="Simpler"
+                    width={280}
+                    height={120}
+                    className="h-24 w-auto"
+                  />
+                </div>
+                <div className="h-80" />
               </div>
             </div>
           </div>
