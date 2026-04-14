@@ -36,20 +36,20 @@ export function HeroCarousel() {
 
   return (
     <section id="servicios" className="scroll-mt-24 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-gradient-to-b from-background via-background to-background">
-      {/* Product Details - Hidden on mobile, shown on desktop/tablet */}
-      <div className="hidden sm:block w-full max-w-4xl mb-8">
-        <div className="bg-card border border-border rounded-2xl p-8 sm:p-12 flex flex-col justify-between">
+      {/* Product Details - Always visible on mobile, shown above carousel */}
+      <div className="w-full max-w-4xl mb-8">
+        <div className="bg-card border border-border rounded-2xl p-4 sm:p-8 lg:p-12 flex flex-col justify-between">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">{current.name}</h2>
-            <p className="text-base sm:text-lg text-foreground/70 mb-2">{current.description}</p>
+            <h2 className="text-xl sm:text-3xl lg:text-3xl font-bold text-foreground mb-2 sm:mb-3">{current.name}</h2>
+            <p className="text-sm sm:text-base lg:text-lg text-foreground/70 mb-1 sm:mb-2">{current.description}</p>
             {current.subdescription && (
-              <p className="text-base sm:text-lg text-foreground/70 mb-6">{current.subdescription}</p>
+              <p className="text-sm sm:text-base lg:text-lg text-foreground/70 mb-4 sm:mb-6">{current.subdescription}</p>
             )}
 
-            <div className="mb-6">
-              <ul className="flex flex-wrap gap-6 items-center justify-center sm:justify-start">
+            <div className="mb-4 sm:mb-6">
+              <ul className="flex flex-wrap gap-2 sm:gap-6 items-center justify-center sm:justify-start">
                 {current.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-2 text-sm text-foreground/60">
+                  <li key={idx} className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-foreground/60">
                     <span className="text-primary">•</span>
                     <span>{feature}</span>
                   </li>
@@ -58,9 +58,9 @@ export function HeroCarousel() {
             </div>
           </div>
 
-          <button className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition w-fit">
+          <button className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition w-fit text-sm sm:text-base">
             {current.id === 'remesas' ? 'Enviar Remesa' : 'Comprar USDT'}
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5" />
           </button>
         </div>
       </div>
