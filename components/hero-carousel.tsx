@@ -47,10 +47,10 @@ export function HeroCarousel() {
             )}
 
             <div className="mb-6">
-              <ul className="space-y-2">
+              <ul className="flex flex-wrap gap-6 items-center justify-center sm:justify-start">
                 {current.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3 text-sm text-foreground/60">
-                    <span className="text-primary mt-1">•</span>
+                  <li key={idx} className="flex items-center gap-2 text-sm text-foreground/60">
+                    <span className="text-primary">•</span>
                     <span>{feature}</span>
                   </li>
                 ))}
