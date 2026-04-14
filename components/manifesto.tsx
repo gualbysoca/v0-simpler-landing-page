@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { Play, Pause, ChevronUp } from 'lucide-react'
 
 export function Manifesto() {
-  const [speedMultiplier, setSpeedMultiplier] = useState(1)
+  const [speedMultiplier, setSpeedMultiplier] = useState(0.5)
   const [isUserScrolling, setIsUserScrolling] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
