@@ -104,8 +104,8 @@ export function Footer() {
               <Image
                 src="/images/simpler-footer-logo.png"
                 alt="Simpler"
-                width={100 %}
-                //height={200}
+                width={800}
+                height={200}
                 className="w-full max-w-4xl h-auto"
                 priority
               />
