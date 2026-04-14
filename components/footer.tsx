@@ -40,24 +40,72 @@ export function Footer() {
     <footer className="bg-black text-background border-t border-background/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {footerSections.map((section, idx) => (
-            <div key={idx}>
-              <h3 className="font-bold text-lg mb-4 text-background">{section.title}</h3>
-              <ul className="space-y-3">
-                {section.links.map((link, linkIdx) => (
-                  <li key={linkIdx}>
-                    <a
-                      href={link.href}
-                      className="text-background/70 hover:text-background transition text-sm"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 mb-12">
+          {/* Column 1: Legal & Transparency */}
+          <div>
+            <h3 className="font-bold text-xs sm:text-lg mb-2 sm:mb-4 text-background">Legales</h3>
+            <ul className="space-y-2 sm:space-y-3">
+              {footerSections[0].links.map((link, linkIdx) => (
+                <li key={linkIdx}>
+                  <a
+                    href={link.href}
+                    className="text-background/70 hover:text-background transition text-xs sm:text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-bold text-xs sm:text-lg mb-2 sm:mb-4 text-background">Transparencia</h3>
+            <ul className="space-y-2 sm:space-y-3">
+              {footerSections[1].links.map((link, linkIdx) => (
+                <li key={linkIdx}>
+                  <a
+                    href={link.href}
+                    className="text-background/70 hover:text-background transition text-xs sm:text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 2: User Protection & Institutional */}
+          <div>
+            <h3 className="font-bold text-xs sm:text-lg mb-2 sm:mb-4 text-background">Protección</h3>
+            <ul className="space-y-2 sm:space-y-3">
+              {footerSections[2].links.map((link, linkIdx) => (
+                <li key={linkIdx}>
+                  <a
+                    href={link.href}
+                    className="text-background/70 hover:text-background transition text-xs sm:text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-bold text-xs sm:text-lg mb-2 sm:mb-4 text-background">Institucional</h3>
+            <ul className="space-y-2 sm:space-y-3">
+              {footerSections[3].links.map((link, linkIdx) => (
+                <li key={linkIdx}>
+                  <a
+                    href={link.href}
+                    className="text-background/70 hover:text-background transition text-xs sm:text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         {/* Divider */}
@@ -99,14 +147,14 @@ export function Footer() {
           </div>
 
           {/* Full Width Watermark Logo */}
-          <div className="w-full -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-4 overflow-hidden">
+          <div className="w-full overflow-hidden">
             <div className="relative flex items-center justify-center opacity-10 scale-150">
               <Image
                 src="/images/simpler-footer-logo.png"
                 alt="Simpler"
                 width={800}
                 height={200}
-                className="w-full max-w-4xl h-auto"
+                className="w-screen h-auto"
                 priority
               />
             </div>

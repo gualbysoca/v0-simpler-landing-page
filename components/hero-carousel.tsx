@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight, Menu, X } from 'lucide-react'
 import Image from 'next/image'
 
 const products = [
@@ -36,8 +36,8 @@ export function HeroCarousel() {
 
   return (
     <section id="servicios" className="scroll-mt-24 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-gradient-to-b from-background via-background to-background">
-      {/* Product Details */}
-      <div className="w-full max-w-4xl mb-8">
+      {/* Product Details - Hidden on mobile, shown on desktop/tablet */}
+      <div className="hidden sm:block w-full max-w-4xl mb-8">
         <div className="bg-card border border-border rounded-2xl p-8 sm:p-12 flex flex-col justify-between">
           <div>
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">{current.name}</h2>
