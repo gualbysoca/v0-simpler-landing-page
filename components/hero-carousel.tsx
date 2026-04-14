@@ -141,17 +141,6 @@ export function HeroCarousel() {
             ))}
           </div>
         </div>
-                    </div>
-                  )}
-                  <div className="text-left min-w-0">
-                    <h3 className="font-bold text-base text-foreground mb-1">{product.name}</h3>
-                    <p className="text-xs text-foreground/60 line-clamp-2">{product.subtitle}</p>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
 
         {/* Desktop Grid */}
         <div className="hidden sm:block">
