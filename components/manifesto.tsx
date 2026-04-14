@@ -15,7 +15,12 @@ export function Manifesto() {
   const manifestoSectionRef = useRef<HTMLDivElement>(null)
   const scrollTimeoutRef = useRef<NodeJS.Timeout>()
   
-  const speedOptions = [0.5, 0.75, 1, 1.5, 2]
+  const speedOptions = [1, 1.5, 2, 3, 4]
+  const actualSpeedMultiplier = speedMultiplier / 2
+  
+  const getDisplaySpeed = (speed: number) => {
+    return (speed / 2).toFixed(2).replace(/\.?0+$/, '')
+  }
   
   const handleSpeedChange = (newSpeed: number) => {
     // Pause, change speed, then resume with new key to reset animation smoothly
@@ -119,7 +124,7 @@ Inteligente.
 
 Simple.`
 
-  const animationDuration = 60 / speedMultiplier
+  const animationDuration = 60 / actualSpeedMultiplier
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -237,7 +242,7 @@ Simple.`
                       : 'bg-primary/20 text-primary hover:bg-primary/40'
                   }`}
                 >
-                  x{speedMultiplier}
+                  x{getDisplaySpeed(speedMultiplier)}
                   <ChevronUp
                     className={`w-4 h-4 transition-transform ${
                       isSpeedMenuOpen ? 'rotate-180' : ''
@@ -260,7 +265,7 @@ Simple.`
                             : 'bg-background text-foreground hover:bg-primary/10'
                         }`}
                       >
-                        {option}x
+                        {getDisplaySpeed(option)}x
                       </button>
                     ))}
                   </div>
