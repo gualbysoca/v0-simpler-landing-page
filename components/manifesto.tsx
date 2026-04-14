@@ -151,7 +151,7 @@ Simple.`
   }, [])
 
   return (
-    <section id="manifiesto" ref={manifestoSectionRef} className="scroll-mt-24 py-20 px-4 sm:px-6 lg:px-8 bg-background">
+    <section id="manifiesto" ref={manifestoSectionRef} className="scroll-mt-24 py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-background">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-12 text-center">
           El manifiesto Simpler
