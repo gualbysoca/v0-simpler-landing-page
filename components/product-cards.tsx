@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { ShieldCheck, Zap, TrendingUp, Globe, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ShieldCheck, Zap, TrendingUp, Globe } from 'lucide-react'
 
 const features = [
   {
@@ -42,14 +42,6 @@ export function ProductCards() {
     }
   }, [activeCard])
 
-  const handlePrev = () => {
-    setActiveCard((prev) => (prev === 0 ? features.length - 1 : prev - 1))
-  }
-
-  const handleNext = () => {
-    setActiveCard((prev) => (prev === features.length - 1 ? 0 : prev + 1))
-  }
-
   return (
     <section id="caracteristicas" className="scroll-mt-24 py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-background">
       <div className="max-w-7xl mx-auto">
@@ -83,14 +75,14 @@ export function ProductCards() {
 
         {/* Mobile Carousel */}
         <div className="md:hidden">
-          <div ref={carouselRef} className="overflow-x-auto snap-x snap-mandatory scrollbar-hide mb-6">
-            <div className="flex gap-4">
+          <div ref={carouselRef} className="overflow-x-auto snap-x snap-mandatory scrollbar-hide mb-6 scroll-smooth">
+            <div className="flex gap-4 w-max">
               {features.map((feature, idx) => {
                 const Icon = feature.icon
                 return (
                   <div
                     key={idx}
-                    className="flex-shrink-0 w-full p-6 bg-card border border-border rounded-xl snap-center"
+                    className="flex-shrink-0 w-screen max-w-sm px-4 p-6 bg-card border border-border rounded-xl snap-center"
                   >
                     <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-4">
                       <Icon className="w-6 h-6 text-primary" />
@@ -103,36 +95,29 @@ export function ProductCards() {
             </div>
           </div>
 
-          {/* Navigation Controls */}
-          <div className="flex items-center justify-center gap-4">
-            <button
-              onClick={handlePrev}
-              className="p-2 rounded-full border border-border hover:bg-card transition active:scale-95"
-              aria-label="Previous card"
-            >
-              <ChevronLeft className="w-5 h-5 text-foreground" />
-            </button>
-            
-            <div className="flex gap-2">
-              {features.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveCard(idx)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    idx === activeCard ? 'bg-primary w-6' : 'bg-foreground/30'
-                  }`}
-                  aria-label={`Go to card ${idx + 1}`}
-                />
-              ))}
-            </div>
-            
-            <button
-              onClick={handleNext}
-              className="p-2 rounded-full border border-border hover:bg-card transition active:scale-95"
-              aria-label="Next card"
-            >
-              <ChevronRight className="w-5 h-5 text-foreground" />
-            </button>
+          {/* Dot Navigation Controls */}
+          <div className="flex items-center justify-center gap-2">
+            {features.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  setActiveCard(idx)
+                  if (carouselRef.current) {
+                    const itemWidth = carouselRef.current.offsetWidth
+                    carouselRef.current.scrollTo({
+                      left: itemWidth * idx,
+                      behavior: 'smooth'
+                    })
+                  }
+                }}
+                className={`transition-all duration-300 ${
+                  idx === activeCard 
+                    ? 'bg-primary h-1.5 w-8' 
+                    : 'bg-foreground/30 h-1.5 w-1.5'
+                }`}
+                aria-label={`Go to card ${idx + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>
