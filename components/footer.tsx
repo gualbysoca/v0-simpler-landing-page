@@ -133,13 +133,8 @@ export function Footer() {
 
           {/* Bottom Bar */}
           <div className="h-px bg-background/10" />
-          <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-background/60">
+          <div className="text-center text-xs text-background/60">
             <p>&copy; 2024 Simpler. Todos los derechos reservados.</p>
-            <div className="flex gap-4 mt-4 sm:mt-0">
-              <a href="#" className="hover:text-background transition">Twitter</a>
-              <a href="#" className="hover:text-background transition">LinkedIn</a>
-              <a href="#" className="hover:text-background transition">Instagram</a>
-            </div>
           </div>
         </div>
       </div>
