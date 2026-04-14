@@ -66,7 +66,7 @@ export function Footer() {
         {/* Bottom Section */}
         <div className="flex flex-col gap-8">
           {/* Regulatory Info - Moved to top */}
-          <div className="max-w-md mx-auto w-full">
+          <div className="max-w-md mx-auto w-full relative">
             <button
               onClick={() => setIsRegulatoryOpen(!isRegulatoryOpen)}
               className="w-full flex items-center gap-3 px-4 py-3 rounded-full bg-background/10 border border-background/20 hover:bg-background/15 transition group"
@@ -82,7 +82,7 @@ export function Footer() {
             </button>
             
             {isRegulatoryOpen && (
-              <div className="mt-4 p-4 rounded-xl bg-background/5 border border-background/10 space-y-3 animate-in fade-in duration-200">
+              <div className="absolute top-full left-0 right-0 mt-2 p-4 rounded-xl bg-background/5 border border-background/10 space-y-3 animate-in fade-in duration-200 z-10">
                 <div className="text-xs text-background/70 space-y-3">
                   <p>
                     <strong className="text-background">USDT:</strong> Activo Virtual sujeto a regulaciones locales. Consulta la normativa de tu país.
