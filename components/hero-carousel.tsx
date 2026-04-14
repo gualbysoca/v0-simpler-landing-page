@@ -46,10 +46,15 @@ export function HeroCarousel() {
               <p className="text-base sm:text-lg text-foreground/70 mb-6">{current.subdescription}</p>
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-              {current.features.map((feature, idx) => (
-                <p key={idx} className="text-sm text-foreground/60">{feature}</p>
-              ))}
+            <div className="mb-6">
+              <ul className="space-y-2">
+                {current.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-start gap-3 text-sm text-foreground/60">
+                    <span className="text-primary mt-1">•</span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
