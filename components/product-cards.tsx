@@ -75,14 +75,14 @@ export function ProductCards() {
 
         {/* Mobile Carousel */}
         <div className="md:hidden">
-          <div ref={carouselRef} className="overflow-x-auto snap-x snap-mandatory scrollbar-hide mb-6 scroll-smooth">
-            <div className="flex gap-4 w-max">
+          <div ref={carouselRef} className="overflow-x-auto snap-x snap-mandatory scrollbar-hide mb-6 scroll-smooth -mx-4">
+            <div className="flex gap-4 px-4">
               {features.map((feature, idx) => {
                 const Icon = feature.icon
                 return (
                   <div
                     key={idx}
-                    className="flex-shrink-0 w-screen max-w-sm px-4 p-6 bg-card border border-border rounded-xl snap-center"
+                    className="flex-shrink-0 w-full sm:max-w-sm p-6 bg-card border border-border rounded-xl snap-center snap-always"
                   >
                     <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-4">
                       <Icon className="w-6 h-6 text-primary" />
@@ -103,7 +103,9 @@ export function ProductCards() {
                 onClick={() => {
                   setActiveCard(idx)
                   if (carouselRef.current) {
-                    const itemWidth = carouselRef.current.offsetWidth
+                    const scrollWidth = carouselRef.current.scrollWidth
+                    const clientWidth = carouselRef.current.clientWidth
+                    const itemWidth = (scrollWidth - 16) / features.length // account for gaps
                     carouselRef.current.scrollTo({
                       left: itemWidth * idx,
                       behavior: 'smooth'
