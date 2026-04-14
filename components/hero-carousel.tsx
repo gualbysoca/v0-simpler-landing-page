@@ -82,7 +82,7 @@ export function HeroCarousel() {
       <div className="w-full max-w-4xl">
         {/* Mobile Carousel - Single card visible with horizontal scroll */}
         <div className="sm:hidden">
-          <div ref={carouselRef} className="overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+          <div ref={carouselRef} className="overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-6">
             <div className="flex gap-4 pb-4">
               {products.map((product, idx) => (
                 <button
@@ -105,6 +105,42 @@ export function HeroCarousel() {
                           className="w-10 h-10 object-contain"
                         />
                       </div>
+                    </div>
+                  )}
+                  <div className="text-left min-w-0">
+                    <h3 className="font-bold text-base text-foreground mb-1">{product.name}</h3>
+                    <p className="text-xs text-foreground/60 line-clamp-2">{product.subtitle}</p>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+          
+          {/* Dot Indicators */}
+          <div className="flex items-center justify-center gap-2">
+            {products.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  setActiveProduct(idx)
+                  if (carouselRef.current) {
+                    const itemWidth = carouselRef.current.offsetWidth
+                    carouselRef.current.scrollTo({
+                      left: itemWidth * idx,
+                      behavior: 'smooth'
+                    })
+                  }
+                }}
+                className={`transition-all duration-300 rounded-full ${
+                  idx === activeProduct 
+                    ? 'bg-primary w-3 h-3' 
+                    : 'bg-foreground/30 w-2 h-2'
+                }`}
+                aria-label={`Go to product ${idx + 1}`}
+              />
+            ))}
+          </div>
+        </div>
                     </div>
                   )}
                   <div className="text-left min-w-0">

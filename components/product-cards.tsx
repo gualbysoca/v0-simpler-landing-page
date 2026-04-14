@@ -110,10 +110,10 @@ export function ProductCards() {
                     })
                   }
                 }}
-                className={`transition-all duration-300 ${
+                className={`transition-all duration-300 rounded-full ${
                   idx === activeCard 
-                    ? 'bg-primary h-1.5 w-8' 
-                    : 'bg-foreground/30 h-1.5 w-1.5'
+                    ? 'bg-primary w-3 h-3' 
+                    : 'bg-foreground/30 w-2 h-2'
                 }`}
                 aria-label={`Go to card ${idx + 1}`}
               />
