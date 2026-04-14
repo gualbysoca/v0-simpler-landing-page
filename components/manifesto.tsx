@@ -44,10 +44,10 @@ export function Manifesto() {
     }, 2000)
   }
   
-  const manifestoText = `THIS IS SIMPLER.
+  const manifestoText = `ESTO ES SIMPLER.
 
 No nacimos para ser uno más.
-No somos la séptima billetera.
+No pretendemos la séptima billetera.
 No vinimos a sumar complejidad.
 
 Vinimos a eliminarla.
@@ -64,8 +64,8 @@ Simple de usar.
 Simple de confiar.
 
 Simpler no es una app.
-Es una arquitectura.
-Un sistema vivo de microservicios financieros
+Es un sistema operativo financiero.
+Un sistema vivo de microservicios hipersimplificados
 que trabajan en silencio
 para que tú no tengas que hacerlo.
 
