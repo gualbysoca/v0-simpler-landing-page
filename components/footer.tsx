@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { Mail, MapPin, ChevronDown, Shield } from 'lucide-react'
+import { ChevronDown, Shield } from 'lucide-react'
 import { useState } from 'react'
 
 const footerSections = [
@@ -65,6 +65,39 @@ export function Footer() {
 
         {/* Bottom Section */}
         <div className="flex flex-col gap-8">
+          {/* Regulatory Info - Moved to top */}
+          <div className="max-w-md mx-auto w-full">
+            <button
+              onClick={() => setIsRegulatoryOpen(!isRegulatoryOpen)}
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-full bg-background/10 border border-background/20 hover:bg-background/15 transition group"
+            >
+              <Shield className="w-6 h-6 text-background flex-shrink-0" />
+              <div className="flex-1 text-left">
+                <p className="font-semibold text-background text-sm">Información Regulatoria</p>
+                <p className="text-xs text-background/60">Lee nuestros términos y disclaimers</p>
+              </div>
+              <ChevronDown 
+                className={`w-5 h-5 text-background/60 transition-transform group-hover:text-background ${isRegulatoryOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
+            
+            {isRegulatoryOpen && (
+              <div className="mt-4 p-4 rounded-xl bg-background/5 border border-background/10 space-y-3 animate-in fade-in duration-200">
+                <div className="text-xs text-background/70 space-y-3">
+                  <p>
+                    <strong className="text-background">USDT:</strong> Activo Virtual sujeto a regulaciones locales. Consulta la normativa de tu país.
+                  </p>
+                  <p>
+                    <strong className="text-background">Disclaimer:</strong> Simpler no es un banco tradicional. Las transacciones pueden estar sujetas a límites y verificaciones adicionales.
+                  </p>
+                  <p>
+                    <strong className="text-background">Riesgo:</strong> Los activos virtuales conllevan riesgo. Invierte solo lo que puedas permitirte perder.
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+
           {/* Full Width Brand Logo */}
           <div className="w-full -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
             <div className="w-11/12">
@@ -76,58 +109,6 @@ export function Footer() {
                 className="w-full h-auto"
                 priority
               />
-            </div>
-          </div>
-
-          {/* Company Info & Regulatory Info */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Company Info & Contact */}
-            <div>
-              <div className="space-y-2 text-sm text-background/70">
-                <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  <a href="mailto:support@simpler.app" className="hover:text-background transition">
-                    support@simpler.app
-                  </a>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4" />
-                  <span>Disponible globalmente</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Regulatory Info Cookie - Collapsible */}
-            <div>
-              <button
-                onClick={() => setIsRegulatoryOpen(!isRegulatoryOpen)}
-                className="w-full flex items-center gap-3 px-4 py-3 rounded-full bg-background/10 border border-background/20 hover:bg-background/15 transition group"
-              >
-                <Shield className="w-6 h-6 text-background flex-shrink-0" />
-                <div className="flex-1 text-left">
-                  <p className="font-semibold text-background text-sm">Información Regulatoria</p>
-                  <p className="text-xs text-background/60">Lee nuestros términos y disclaimers</p>
-                </div>
-                <ChevronDown 
-                  className={`w-5 h-5 text-background/60 transition-transform group-hover:text-background ${isRegulatoryOpen ? 'rotate-180' : ''}`}
-                />
-              </button>
-              
-              {isRegulatoryOpen && (
-                <div className="mt-4 p-4 rounded-xl bg-background/5 border border-background/10 space-y-3 animate-in fade-in duration-200">
-                  <div className="text-xs text-background/70 space-y-3">
-                    <p>
-                      <strong className="text-background">USDT:</strong> Activo Virtual sujeto a regulaciones locales. Consulta la normativa de tu país.
-                    </p>
-                    <p>
-                      <strong className="text-background">Disclaimer:</strong> Simpler no es un banco tradicional. Las transacciones pueden estar sujetas a límites y verificaciones adicionales.
-                    </p>
-                    <p>
-                      <strong className="text-background">Riesgo:</strong> Los activos virtuales conllevan riesgo. Invierte solo lo que puedas permitirte perder.
-                    </p>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
 
