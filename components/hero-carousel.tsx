@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight, Menu, X } from 'lucide-react'
 import Image from 'next/image'
 
 const products = [
@@ -82,13 +82,13 @@ export function HeroCarousel() {
       <div className="w-full max-w-4xl">
         {/* Mobile Carousel - Single card visible with horizontal scroll */}
         <div className="sm:hidden">
-          <div ref={carouselRef} className="overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-6 scroll-smooth">
-            <div className="flex gap-4 pb-4 w-max">
+          <div ref={carouselRef} className="overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-6">
+            <div className="flex gap-4 pb-4">
               {products.map((product, idx) => (
                 <button
                   key={product.id}
                   onClick={() => setActiveProduct(idx)}
-                  className={`flex-shrink-0 w-screen max-w-sm px-4 py-4 rounded-xl border-2 transition-all duration-300 flex items-center gap-4 snap-center ${
+                  className={`flex-shrink-0 w-full p-4 rounded-xl border-2 transition-all duration-300 flex items-center gap-4 snap-center ${
                     activeProduct === idx
                       ? 'border-primary bg-primary/5 shadow-lg'
                       : 'border-border bg-card'
@@ -116,36 +116,40 @@ export function HeroCarousel() {
             </div>
           </div>
           
-          {/* Dot and Dash Indicators with synchronized navigation */}
-          <div className="flex items-center justify-center gap-3 mt-4">
+          {/* Dot Indicators */}
+          <div className="flex items-center justify-center gap-2">
             {products.map((_, idx) => (
-              <div key={idx} className="flex gap-1">
-                <button
-                  onClick={() => {
-                    setActiveProduct(idx)
-                    if (carouselRef.current) {
-                      const itemWidth = carouselRef.current.offsetWidth
-                      carouselRef.current.scrollTo({
-                        left: itemWidth * idx,
-                        behavior: 'smooth'
-                      })
-                    }
-                  }}
-                  className={`transition-all duration-300 rounded-full ${
-                    idx === activeProduct 
-                      ? 'bg-primary w-3 h-1' 
-                      : 'bg-foreground/30 w-2 h-1'
-                  }`}
-                  aria-label={`Go to product ${idx + 1}`}
-                />
-                <div className={`transition-all duration-300 rounded-full ${
+              <button
+                key={idx}
+                onClick={() => {
+                  setActiveProduct(idx)
+                  if (carouselRef.current) {
+                    const itemWidth = carouselRef.current.offsetWidth
+                    carouselRef.current.scrollTo({
+                      left: itemWidth * idx,
+                      behavior: 'smooth'
+                    })
+                  }
+                }}
+                className={`transition-all duration-300 rounded-full ${
                   idx === activeProduct 
                     ? 'bg-primary w-3 h-3' 
                     : 'bg-foreground/30 w-2 h-2'
                 }`}
-                />
-              </div>
+                aria-label={`Go to product ${idx + 1}`}
+              />
             ))}
+          </div>
+        </div>
+                    </div>
+                  )}
+                  <div className="text-left min-w-0">
+                    <h3 className="font-bold text-base text-foreground mb-1">{product.name}</h3>
+                    <p className="text-xs text-foreground/60 line-clamp-2">{product.subtitle}</p>
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 

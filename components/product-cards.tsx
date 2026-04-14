@@ -95,35 +95,28 @@ export function ProductCards() {
             </div>
           </div>
 
-          {/* Dot and Dash Indicators with synchronized navigation */}
-          <div className="flex items-center justify-center gap-3">
+          {/* Dot Navigation Controls */}
+          <div className="flex items-center justify-center gap-2">
             {features.map((_, idx) => (
-              <div key={idx} className="flex gap-1">
-                <button
-                  onClick={() => {
-                    setActiveCard(idx)
-                    if (carouselRef.current) {
-                      const itemWidth = carouselRef.current.offsetWidth
-                      carouselRef.current.scrollTo({
-                        left: itemWidth * idx,
-                        behavior: 'smooth'
-                      })
-                    }
-                  }}
-                  className={`transition-all duration-300 rounded-full ${
-                    idx === activeCard 
-                      ? 'bg-primary w-3 h-1' 
-                      : 'bg-foreground/30 w-2 h-1'
-                  }`}
-                  aria-label={`Go to card ${idx + 1}`}
-                />
-                <div className={`transition-all duration-300 rounded-full ${
+              <button
+                key={idx}
+                onClick={() => {
+                  setActiveCard(idx)
+                  if (carouselRef.current) {
+                    const itemWidth = carouselRef.current.offsetWidth
+                    carouselRef.current.scrollTo({
+                      left: itemWidth * idx,
+                      behavior: 'smooth'
+                    })
+                  }
+                }}
+                className={`transition-all duration-300 rounded-full ${
                   idx === activeCard 
                     ? 'bg-primary w-3 h-3' 
                     : 'bg-foreground/30 w-2 h-2'
                 }`}
-                />
-              </div>
+                aria-label={`Go to card ${idx + 1}`}
+              />
             ))}
           </div>
         </div>
