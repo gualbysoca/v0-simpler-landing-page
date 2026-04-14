@@ -5,13 +5,15 @@ import Image from 'next/image'
 import { Play, Pause } from 'lucide-react'
 
 export function Manifesto() {
-  const [speed, setSpeed] = useState(100)
+  const [speedMultiplier, setSpeedMultiplier] = useState(1)
   const [isUserScrolling, setIsUserScrolling] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const manifestoSectionRef = useRef<HTMLDivElement>(null)
   const scrollTimeoutRef = useRef<NodeJS.Timeout>()
+  
+  const speedOptions = [1, 1.25, 1.5, 1.75, 2]
   
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault()
@@ -23,7 +25,7 @@ export function Manifesto() {
     }
     
     if (scrollContainerRef.current) {
-      const scrollAmount = (e.deltaY * speed) / 100
+      const scrollAmount = (e.deltaY * speedMultiplier)
       scrollContainerRef.current.scrollTop += scrollAmount
     }
     
@@ -108,7 +110,7 @@ Inteligente.
 
 Simple.`
 
-  const animationDuration = (100 / speed) * 60
+  const animationDuration = 60 / speedMultiplier
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -200,9 +202,9 @@ Simple.`
             </div>
           </div>
 
-          {/* Speed Control - Horizontal Bar */}
+          {/* Speed Control - Buttons */}
           <div className="flex flex-col items-center gap-4">
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4">
               <button
                 onClick={() => setIsPlaying(!isPlaying)}
                 className="p-3 rounded-full bg-primary text-white hover:bg-primary/90 transition"
@@ -214,20 +216,24 @@ Simple.`
                   <Play className="w-6 h-6" />
                 )}
               </button>
-              <input
-                type="range"
-                min="10"
-                max="200"
-                value={speed}
-                onChange={(e) => setSpeed(Number(e.target.value))}
-                className="w-64 h-2 cursor-pointer"
-                style={{
-                  accentColor: 'var(--primary, #9B6DD0)',
-                }}
-              />
+              <div className="flex gap-2">
+                {speedOptions.map((option) => (
+                  <button
+                    key={option}
+                    onClick={() => setSpeedMultiplier(option)}
+                    className={`px-4 py-2 rounded-full font-bold transition ${
+                      speedMultiplier === option
+                        ? 'bg-primary text-white'
+                        : 'bg-primary/20 text-primary hover:bg-primary/40'
+                    }`}
+                  >
+                    x{option}
+                  </button>
+                ))}
+              </div>
             </div>
             <div className="text-center">
-              <p className="text-lg font-bold text-primary">{speed}% - Velocidad</p>
+              <p className="text-lg font-bold text-primary">Velocidad: x{speedMultiplier}</p>
             </div>
           </div>
         </div>
