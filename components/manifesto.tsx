@@ -169,6 +169,7 @@ Simple.`
               className="h-80 overflow-hidden relative"
             >
               <div className={`whitespace-pre-line text-white leading-relaxed font-light text-center space-y-4 manifesto-scroll ${!isPlaying || isUserScrolling ? 'paused' : ''}`} style={{ willChange: 'transform' }}>
+                <div className="h-80" />
                 {manifestoText.split('\n\n').map((paragraph, idx) => (
                   <p key={`first-${idx}`} className="text-sm sm:text-base">
                     {paragraph}
