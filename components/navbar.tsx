@@ -18,14 +18,17 @@ export function Navbar() {
             <span className="font-semibold text-lg text-foreground">Simpler</span>
           </div>
           <div className="hidden sm:flex items-center gap-8">
-            <a href="#productos" className="text-sm text-foreground/60 hover:text-foreground transition">
-              Productos
+            <a href="#nosotros" className="text-sm text-foreground/60 hover:text-foreground transition">
+              Nosotros
+            </a>
+            <a href="#servicios" className="text-sm text-foreground/60 hover:text-foreground transition">
+              Servicios
             </a>
             <a href="#caracteristicas" className="text-sm text-foreground/60 hover:text-foreground transition">
               Características
             </a>
-            <a href="#seguridad" className="text-sm text-foreground/60 hover:text-foreground transition">
-              Seguridad
+            <a href="#manifiesto" className="text-sm text-foreground/60 hover:text-foreground transition">
+              Manifiesto
             </a>
           </div>
         </div>

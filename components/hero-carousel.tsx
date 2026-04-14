@@ -35,7 +35,7 @@ export function HeroCarousel() {
   const current = products[activeProduct]
 
   return (
-    <section className="flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-gradient-to-b from-background via-background to-background">
+    <section id="nosotros" className="flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 bg-gradient-to-b from-background via-background to-background">
       <div className="max-w-4xl w-full text-center mb-12">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-balance text-foreground mb-4">
           Simpler es...
@@ -49,7 +49,7 @@ export function HeroCarousel() {
       </div>
 
       {/* Product Details - Moved to top */}
-      <div className="w-full max-w-4xl mb-8">
+      <div id="servicios" className="w-full max-w-4xl mb-8">
         <div className="bg-card border border-border rounded-2xl p-8 sm:p-12 flex flex-col justify-between">
           <div>
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">{current.name}</h2>
