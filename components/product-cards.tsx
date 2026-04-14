@@ -138,3 +138,4 @@ export function ProductCards() {
       </div>
     </section>
   )
+}
