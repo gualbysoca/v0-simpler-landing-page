@@ -47,7 +47,7 @@ export function Manifesto() {
   const manifestoText = `ESTO ES SIMPLER.
 
 No nacimos para ser uno más.
-No pretendemos la séptima billetera.
+No queremos ser la séptima billetera electrónica.
 No vinimos a sumar complejidad.
 
 Vinimos a eliminarla.
