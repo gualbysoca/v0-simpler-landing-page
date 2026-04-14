@@ -1,7 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import { Mail, MapPin } from 'lucide-react'
+import { Mail, MapPin, ChevronDown } from 'lucide-react'
+import { useState } from 'react'
 
 const footerSections = [
   {
@@ -33,6 +34,8 @@ const footerSections = [
 ]
 
 export function Footer() {
+  const [isRegulatoryOpen, setIsRegulatoryOpen] = useState(false)
+  
   return (
     <footer className="bg-black text-background border-t border-background/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -80,9 +83,6 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Company Info & Contact */}
             <div>
-              <p className="text-background/70 text-sm mb-4 leading-relaxed">
-                Plataforma fintech dedicada a simplificar remesas internacionales y acceso a activos virtuales.
-              </p>
               <div className="space-y-2 text-sm text-background/70">
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />
@@ -97,20 +97,37 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Regulatory Info & Disclaimers */}
+            {/* Regulatory Info Cookie - Collapsible */}
             <div>
-              <h4 className="font-bold text-background mb-4">Información Regulatoria</h4>
-              <div className="space-y-3 text-xs text-background/70">
-                <p>
-                  <strong className="text-background">USDT:</strong> Activo Virtual sujeto a regulaciones locales. Consulta la normativa de tu país.
-                </p>
-                <p>
-                  <strong className="text-background">Disclaimer:</strong> Simpler no es un banco tradicional. Las transacciones pueden estar sujetas a límites y verificaciones adicionales.
-                </p>
-                <p>
-                  <strong className="text-background">Riesgo:</strong> Los activos virtuales conllevan riesgo. Invierte solo lo que puedas permitirte perder.
-                </p>
-              </div>
+              <button
+                onClick={() => setIsRegulatoryOpen(!isRegulatoryOpen)}
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-full bg-background/10 border border-background/20 hover:bg-background/15 transition group"
+              >
+                <span className="text-2xl">🍪</span>
+                <div className="flex-1 text-left">
+                  <p className="font-semibold text-background text-sm">Información Regulatoria</p>
+                  <p className="text-xs text-background/60">Lee nuestros términos y disclaimers</p>
+                </div>
+                <ChevronDown 
+                  className={`w-5 h-5 text-background/60 transition-transform group-hover:text-background ${isRegulatoryOpen ? 'rotate-180' : ''}`}
+                />
+              </button>
+              
+              {isRegulatoryOpen && (
+                <div className="mt-4 p-4 rounded-xl bg-background/5 border border-background/10 space-y-3 animate-in fade-in duration-200">
+                  <div className="text-xs text-background/70 space-y-3">
+                    <p>
+                      <strong className="text-background">USDT:</strong> Activo Virtual sujeto a regulaciones locales. Consulta la normativa de tu país.
+                    </p>
+                    <p>
+                      <strong className="text-background">Disclaimer:</strong> Simpler no es un banco tradicional. Las transacciones pueden estar sujetas a límites y verificaciones adicionales.
+                    </p>
+                    <p>
+                      <strong className="text-background">Riesgo:</strong> Los activos virtuales conllevan riesgo. Invierte solo lo que puedas permitirte perder.
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
