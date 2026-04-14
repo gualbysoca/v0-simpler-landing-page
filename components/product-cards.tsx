@@ -29,18 +29,32 @@ const features = [
 export function ProductCards() {
   const [activeCard, setActiveCard] = useState(0)
   const carouselRef = useRef<HTMLDivElement>(null)
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
 
-  // Auto-scroll carousel in mobile when activeCard changes
+  // Observe scroll position to update active dot when user swipes
   useEffect(() => {
-    if (carouselRef.current) {
-      const carousel = carouselRef.current
-      const scrollAmount = carousel.children[activeCard]?.clientWidth || 0
-      carousel.scrollTo({
-        left: scrollAmount * activeCard + (activeCard > 0 ? 16 * activeCard : 0),
-        behavior: 'smooth'
-      })
+    const carousel = carouselRef.current
+    if (!carousel) return
+
+    const handleScroll = () => {
+      const scrollLeft = carousel.scrollLeft
+      const itemWidth = carousel.offsetWidth
+      const newActive = Math.round(scrollLeft / itemWidth)
+      setActiveCard(newActive)
     }
-  }, [activeCard])
+
+    carousel.addEventListener('scroll', handleScroll, { passive: true })
+    return () => carousel.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Scroll to the correct card when a dot is clicked
+  const scrollToCard = (idx: number) => {
+    const carousel = carouselRef.current
+    if (!carousel) return
+    const itemWidth = carousel.offsetWidth
+    carousel.scrollTo({ left: itemWidth * idx, behavior: 'smooth' })
+    setActiveCard(idx)
+  }
 
   return (
     <section id="caracteristicas" className="scroll-mt-24 py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-background">
@@ -75,14 +89,16 @@ export function ProductCards() {
 
         {/* Mobile Carousel */}
         <div className="md:hidden">
-          <div ref={carouselRef} className="overflow-x-auto snap-x snap-mandatory scrollbar-hide mb-6 scroll-smooth -mx-4">
-            <div className="flex gap-4 px-4">
+          <div ref={carouselRef} className="overflow-x-auto snap-x snap-mandatory scrollbar-hide mb-6 scroll-smooth">
+            <div className="flex">
               {features.map((feature, idx) => {
                 const Icon = feature.icon
                 return (
                   <div
                     key={idx}
-                    className="flex-shrink-0 w-full sm:max-w-sm p-6 bg-card border border-border rounded-xl snap-center snap-always"
+                    ref={el => { cardRefs.current[idx] = el }}
+                    className="flex-shrink-0 w-full p-6 bg-card border border-border rounded-xl snap-start snap-always"
+                    style={{ width: '100%' }}
                   >
                     <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg mb-4">
                       <Icon className="w-6 h-6 text-primary" />
@@ -96,28 +112,17 @@ export function ProductCards() {
           </div>
 
           {/* Dot Navigation Controls */}
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex items-center justify-center gap-3">
             {features.map((_, idx) => (
               <button
                 key={idx}
-                onClick={() => {
-                  setActiveCard(idx)
-                  if (carouselRef.current) {
-                    const scrollWidth = carouselRef.current.scrollWidth
-                    const clientWidth = carouselRef.current.clientWidth
-                    const itemWidth = (scrollWidth - 16) / features.length // account for gaps
-                    carouselRef.current.scrollTo({
-                      left: itemWidth * idx,
-                      behavior: 'smooth'
-                    })
-                  }
-                }}
+                onClick={() => scrollToCard(idx)}
                 className={`transition-all duration-300 rounded-full ${
-                  idx === activeCard 
-                    ? 'bg-primary w-3 h-3' 
+                  idx === activeCard
+                    ? 'bg-primary w-5 h-2'
                     : 'bg-foreground/30 w-2 h-2'
                 }`}
-                aria-label={`Go to card ${idx + 1}`}
+                aria-label={`Ir al card ${idx + 1}`}
               />
             ))}
           </div>
