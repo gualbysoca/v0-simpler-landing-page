@@ -86,9 +86,9 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
             {/* Info Text */}
             <div className="bg-primary/5 border border-primary/20 rounded-lg p-3">
               <p className="text-sm text-foreground/70">
-                Para realizar consultas o reclamos, puedes contactarnos en:
+                Para realizar consultas o reclamos, puedes llenar este formulario o enviarnos un correo electrónico a:
               </p>
-              <p className="text-sm font-semibold text-primary mt-1">soporte@simpler.bo</p>
+              <p className="text-sm font-semibold text-primary mt-1 text-center">soporte@simpler.bo</p>
             </div>
 
             {/* Form */}
