@@ -8,7 +8,7 @@ export function AboutUs() {
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-balance text-foreground mb-4">
           Simpler es...
         </h1>
-        <p className="text-base sm:text-2xl text-foreground/60 text-balance max-w-2xl mb-8" style={{ marginLeft: '75px', marginRight: '75px' }}>
+        <p className="text-sm sm:text-lg lg:text-xl text-foreground/60 text-balance text-center max-w-2xl mx-auto mb-8">
           un ecosistema de "pequeños servicios financieros hipersimplificados" diseñados para solucionar necesidades específicas...
         </p>
       </div>
