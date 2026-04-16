@@ -9,7 +9,7 @@ const footerSections = [
   {
     title: 'Legales',
     links: [
-      { label: 'Términos de Servicio', href: '#' },
+      { label: 'Términos de Servicio', href: '/pdfs/Simpler_Terminos_Condiciones.pdf', external: true },
       { label: 'Política de Privacidad', href: '#' }
     ]
   },
@@ -51,6 +51,8 @@ export function Footer() {
                 <li key={linkIdx}>
                   <a
                     href={link.href}
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
                     className="text-background/70 hover:text-background transition text-xs sm:text-sm"
                   >
                     {link.label}
