@@ -10,7 +10,7 @@ const footerSections = [
     title: 'Legales',
     links: [
       { label: 'Términos de Servicio', href: '/Simpler_Terminos_Condiciones.pdf', external: true },
-      { label: 'Política de Privacidad', href: '#' }
+      { label: 'Política de Privacidad', href: '/Simpler_Politica_Privacidad.pdf', external: true }
     ]
   },
   {
