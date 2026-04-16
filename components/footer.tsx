@@ -9,7 +9,7 @@ const footerSections = [
   {
     title: 'Legales',
     links: [
-      { label: 'Términos de Servicio', href: '/terminos-de-servicio' },
+      { label: 'Términos de Servicio', href: '#' },
       { label: 'Política de Privacidad', href: '#' }
     ]
   },
