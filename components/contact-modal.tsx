@@ -6,9 +6,10 @@ import { X, Mail } from 'lucide-react'
 interface ContactModalProps {
   isOpen: boolean
   onClose: () => void
+  recipientEmail?: string
 }
 
-export function ContactModal({ isOpen, onClose }: ContactModalProps) {
+export function ContactModal({ isOpen, onClose, recipientEmail = 'soporte@simpler.bo' }: ContactModalProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -32,7 +33,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({ ...formData, recipientEmail })
       })
 
       if (response.ok) {

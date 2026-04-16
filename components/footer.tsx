@@ -9,8 +9,8 @@ const footerSections = [
   {
     title: 'Legales',
     links: [
-      { label: 'Términos de Servicio', href: '/pdfs/Simpler_Terminos_Condiciones.pdf', external: true },
-      { label: 'Política de Privacidad', href: '#' }
+      { label: 'Términos de Servicio', href: '/Simpler_Terminos_Condiciones.pdf', external: true },
+      { label: 'Política de Privacidad', href: '/Simpler_Politica_Privacidad.pdf', external: true }
     ]
   },
   {
@@ -22,7 +22,7 @@ const footerSections = [
   {
     title: 'Protección al Usuario',
     links: [
-      { label: 'Centro de Seguridad', href: '#' }
+      { label: 'Solicitar Ayuda', href: '#', action: 'help' }
     ]
   },
   {
@@ -37,6 +37,7 @@ const footerSections = [
 export function Footer() {
   const [isRegulatoryOpen, setIsRegulatoryOpen] = useState(false)
   const [isContactOpen, setIsContactOpen] = useState(false)
+  const [contactEmail, setContactEmail] = useState('soporte@simpler.bo')
 
   return (
     <footer className="bg-black text-background border-t border-background/10">
@@ -84,12 +85,24 @@ export function Footer() {
             <ul className="space-y-2 sm:space-y-3">
               {footerSections[2].links.map((link, linkIdx) => (
                 <li key={linkIdx}>
-                  <a
-                    href={link.href}
-                    className="text-background/70 hover:text-background transition text-xs sm:text-sm"
-                  >
-                    {link.label}
-                  </a>
+                  {link.action === 'help' ? (
+                    <button
+                      onClick={() => {
+                        setContactEmail('reclamos@simpler.bo')
+                        setIsContactOpen(true)
+                      }}
+                      className="text-background/70 hover:text-background transition text-xs sm:text-sm text-left"
+                    >
+                      {link.label}
+                    </button>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-background/70 hover:text-background transition text-xs sm:text-sm"
+                    >
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -181,7 +194,7 @@ export function Footer() {
       </div>
 
       {/* Contact Modal */}
-      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} recipientEmail={contactEmail} />
     </footer>
   )
 }
