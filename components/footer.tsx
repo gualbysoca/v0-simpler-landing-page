@@ -3,12 +3,13 @@
 import Image from 'next/image'
 import { ChevronDown, Shield } from 'lucide-react'
 import { useState } from 'react'
+import { ContactModal } from './contact-modal'
 
 const footerSections = [
   {
     title: 'Legales',
     links: [
-      { label: 'Términos de Servicio', href: '#' },
+      { label: 'Términos de Servicio', href: '/pdfs/Simpler_Terminos_Condiciones.pdf', external: true },
       { label: 'Política de Privacidad', href: '#' }
     ]
   },
@@ -35,6 +36,7 @@ const footerSections = [
 
 export function Footer() {
   const [isRegulatoryOpen, setIsRegulatoryOpen] = useState(false)
+  const [isContactOpen, setIsContactOpen] = useState(false)
 
   return (
     <footer className="bg-black text-background border-t border-background/10">
@@ -49,6 +51,8 @@ export function Footer() {
                 <li key={linkIdx}>
                   <a
                     href={link.href}
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
                     className="text-background/70 hover:text-background transition text-xs sm:text-sm"
                   >
                     {link.label}
@@ -96,11 +100,20 @@ export function Footer() {
             <ul className="space-y-2 sm:space-y-3">
               {footerSections[3].links.map((link, linkIdx) => (
                 <li key={linkIdx}>
-                  <a
-                    href={link.href}
-                    className="text-background/70 hover:text-background transition text-xs sm:text-sm">
-                    {link.label}
-                  </a>
+                  {link.label === 'Contáctanos' ? (
+                    <button
+                      onClick={() => setIsContactOpen(true)}
+                      className="text-background/70 hover:text-background transition text-xs sm:text-sm text-left"
+                    >
+                      {link.label}
+                    </button>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-background/70 hover:text-background transition text-xs sm:text-sm">
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -166,6 +179,9 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Contact Modal */}
+      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </footer>
   )
 }

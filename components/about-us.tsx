@@ -9,7 +9,7 @@ export function AboutUs() {
           Simpler es...
         </h1>
         <p className="text-sm sm:text-lg lg:text-xl text-foreground/60 text-balance text-center max-w-2xl mx-auto mb-8">
-          un ecosistema de "pequeños servicios financieros hipersimplificados" diseñados para solucionar necesidades específicas......
+          un ecosistema de "pequeños servicios financieros hipersimplificados" diseñados para solucionar necesidades específicas.
         </p>
       </div>
     </section>
