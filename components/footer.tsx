@@ -172,14 +172,14 @@ export function Footer() {
           </div>
 
           {/* Full Width Watermark Logo */}
-          <div className="w-full overflow-hidden">
-            <div className="relative flex items-center justify-center opacity-10 scale-150">
+          <div className="w-full">
+            <div className="relative flex items-center justify-center opacity-10">
               <Image
                 src="/images/simpler-footer-logo.png"
                 alt="Simpler"
                 width={800}
                 height={200}
-                className="w-screen h-auto"
+                className="w-full max-w-full h-auto object-contain"
                 priority
               />
             </div>
