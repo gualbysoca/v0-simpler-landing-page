@@ -17,15 +17,19 @@ const products = [
       '🇧🇷 Brasil',
       '🇨🇱 Chile',
       '🇵🇪 Perú'
-    ]
+    ],
+    url: 'https://remesas.simpler.bo',
+    buttonText: 'Enviar Remesa'
   },
   {
     id: 'usdt',
-    name: 'USDT',
+    name: 'Compra USDT',
     description: 'Compra USDT fácil y seguro',
     subdescription: 'Intercambia Bolivianos por USDT en minutos',
     subtitle: 'Activo Virtual regulado y seguro',
-    features: ['Precio en tiempo real', 'Operaciones 24/7', 'Máxima seguridad']
+    features: ['Precio en tiempo real', 'Operaciones 24/7', 'Máxima seguridad'],
+    url: 'https://cambio.simpler.bo',
+    buttonText: 'Comprar USDT'
   }
 ]
 
@@ -173,10 +177,15 @@ export function HeroCarousel() {
             </div>
           </div>
 
-          <button className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition w-fit text-sm sm:text-base">
-            {current.id === 'remesas' ? 'Enviar Remesa' : 'Comprar USDT'}
+          <a 
+            href={current.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition w-fit text-sm sm:text-base"
+          >
+            {current.buttonText}
             <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5" />
-          </button>
+          </a>
         </div>
       </div>
     </section>
